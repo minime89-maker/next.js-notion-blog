@@ -1,14 +1,15 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { getDatabase } from '../lib/client'
 
-const databaseId = process.env.NOTION_DATABASE_ID
+export const databaseId = process.env.NOTION_DATABASE_ID
 
-export default function Home({ pages }) {
+export default function Home({ database }) {
 
   /* logging response */
   console.log({
-    pages: pages,
-    avatar: pages[0].properties.Author.avatar_url
+    pages: database,
+    avatar: database[0].properties.Author.avatar_url
   })
 
 
@@ -36,23 +37,24 @@ export default function Home({ pages }) {
 
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
 
-        {pages && pages.map((page) => {
-          return (
-            <a
-            key={page.id}
-            href={`/${page.id}`}
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">{page.properties.Name.title[0].plain_text} &rarr;</h3>
-            <p className="mt-4 text-xl">
-              {page.properties.Description.rich_text[0].plain_text}
-            </p>
-            <small className="mt-4 text-gray-500">{page.properties.Date.date.start}</small>
-            <div className='mt-4 flex items-center justify-start text-blue-500 text-xl'>{page.properties.Author.avatar_url === null ? <img src={'/favicon.ico'}/> : <img className="rounded-full mr-2" src={page.properties.Author.created_by.avatar_url} width={24} height={24} />}{' '}{page.properties.Author.created_by.name}</div>
-          </a>
-          )
-        })}
-         
+          {database && database.map((page) => {
+            return (
+              <Link
+                key={page.id}
+                href={`/${page.id}`}
+              >
+                <a className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600">
+                  <h3 className="text-2xl font-bold">{page.properties.Name.title[0].plain_text} &rarr;</h3>
+                  <p className="mt-4 text-xl">
+                    {page.properties.Description.rich_text[0].plain_text}
+                  </p>
+                  <small className="mt-4 text-gray-500">{page.properties.Date.date.start}</small>
+                  <div className='mt-4 flex items-center justify-start text-blue-500 text-xl'>{page.properties.Author.avatar_url === null ? <img src={'/favicon.ico'} /> : <img className="rounded-full mr-2" src={page.properties.Author.created_by.avatar_url} width={24} height={24} />}{' '}{page.properties.Author.created_by.name}</div>
+                </a>
+              </Link>
+            )
+          })}
+
 
           {/* <a
             href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -87,7 +89,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      pages: database
+      database: database
     },
     /* revalidate: 1 */
   }

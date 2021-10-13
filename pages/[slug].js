@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {Layout, Text} from '../components/layout'
+import Head from 'next/head'
+import {Layout, Text, Heading_2} from '../components/layout'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 
@@ -22,7 +23,7 @@ const blockPage = (block) => {
 			);
 		case "heading_2":
 			return (
-				<Text key={id} text={value.text} />
+				<Heading_2 key={id}>{value.text[0].plain_text}</Heading_2>
 			);
 		case "heading_3":
 			return (
@@ -40,7 +41,7 @@ const blockPage = (block) => {
 		case 'external':
 		case 'unsupported':
 			return (
-				<Image key={id} src={block.image.external.url} width={480} height={480} />	
+				<Image key={id} src={block.image.external.url} width={480} height={360} />	
 			)
 		case 'bulleted_list_item':
 			return (
@@ -90,16 +91,17 @@ const Pages = ({ pages, blocks }) => {
 			<header className="my-8">
 				<h1 className="text-4xl font-semibold">{header.title}</h1>
 				<h2 className='text-2xl'>{header.description}</h2>
-				<div className='flex items-center'>
-				<img className='rounded-full' src={header.authorImg} width={24} height={24} />
-				<p>
-					{pages.properties.Date.date.start}
+				<div className='flex items-center pt-2'>
+				<img className='rounded-md h-6 w-6 mr-2' src={header.authorImg} width={24} height={24} />
+				<p className='text-gray-700'>
+					{pages.properties.Date.created_time}
 				</p>
 				</div>
 			</header>
 
 			<main className='mb-8'>
 				{blocks && blocks.map((block) => {
+					console.log(block.Slug)
 					return (
 						<div key={block.id}>
 							{blockPage(block)}
@@ -123,7 +125,8 @@ export async function getStaticPaths() {
 	return {
 		paths: db.map((page) => ({
 			params: {
-				id: page.id
+				id: page.id,
+				slug: page.properties.Slug.rich_text[0].plain_text
 			}
 		})),
 		fallback: true
@@ -132,9 +135,11 @@ export async function getStaticPaths() {
 
 //export getStaticProps()
 export async function getStaticProps({ params }) {
-	const { id } = params
-	const pages = await getPages(id)
-	const blocks = await getBlocks(id)
+	const { slug } = params
+	const db = await getDatabase(databaseId)
+	const filter = db.filter(page => page.properties.Slug.rich_text[0].plain_text === slug)
+	const pages = await getPages(filter[0].id)
+	const blocks = await getBlocks(filter[0].id)
 	return {
 		props: {
 			pages,

@@ -1,9 +1,7 @@
 export const Layout = ({ children }) => {
-	return (
-		<div className="flex flex-col flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">{children}</div>
-	)
-}
+	return <div className="mx-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">{children}</div>
 
+}
 
 // rich_text component for annotations
 export const Text = ({ text }) => {
@@ -17,17 +15,21 @@ export const Text = ({ text }) => {
 			<span
 				key={id}
 				className={[
-					'text-lg',
+					'text-md',
 					bold ? 'font-bold' : '',
 					italic ? 'font-italic' : '',
 					underline ? 'underline' : '',
 					strikethrough ? 'line-through' : '',
-					code ? 'text-blue-800' : '',
+					code ? 'text-red-800' : '',
 				].join(' ')}
 				style={color !== 'default' ? { color } : {}}
 			>
-				{text.link ? <a href={text.link.url} className='underline text-purple-800'>{text.content}</a> : text.content}
+				{text.link ? <a href={text.link.url} className='underline text-blue-800'>{text.content}</a> : text.content}
 			</span>
 		)
 	})
 )}
+
+export const Heading_2 = ({ children, id }) => {
+	return <span className="text-xl font-semibold text-gray-900" key={id}>{children} </span>
+}

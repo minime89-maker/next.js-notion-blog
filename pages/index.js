@@ -6,12 +6,21 @@ export const databaseId = process.env.NOTION_DATABASE_ID
 
 export default function Home({ database }) {
 
+  
+
   /* logging response */
   console.log({
     pages: database,
-    avatar: database[0].properties.Author.avatar_url
   })
 
+  // calculate reading time for each page
+  // const pages = database.map(page => {
+  //   const readingTime = Math.ceil(page.content.length / 200)
+  //   return {
+  //     ...page,
+  //     readingTime,
+  //   }
+  // })
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -21,7 +30,7 @@ export default function Home({ database }) {
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
+        <h1 className="text-3xl font-bold">
           Welcome to{' '}
           <a className="text-blue-600" href="https://nextjs.org">
             Next.js + Notion Content Management System
@@ -35,21 +44,22 @@ export default function Home({ database }) {
           </code>
         </p>
 
+        {!database && <p>Loading...</p>}
         <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-
           {database && database.map((page) => {
             return (
               <Link
                 key={page.id}
-                href={`/${page.id}`}
+                href={`/${page.properties.Slug.rich_text[0].plain_text}`}
               >
-                <a className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600">
-                  <h3 className="text-2xl font-bold">{page.properties.Name.title[0].plain_text} &rarr;</h3>
-                  <p className="mt-4 text-xl">
+                <a className="p-4 mt-4 text-left  w-96  hover:text-blue-600 focus:text-blue-600">
+                {/* <div className='mt-4  mb-2 text-gray-700 flex items-center'>{page.properties.Author.avatar_url === null ? <img src={'/favicon.ico'} /> : <img className="rounded-md w-6 h-6 mr-2" src={page.properties.Author.created_by.avatar_url} width={64} height={64} />}{' '}{page.properties.Author.created_by.name}</div> */}
+                  <h3 className="text-xl font-semibold text-gray-900">{page.properties.Name.title[0].plain_text}</h3>
+                  <p className="mt-4 text-md text-gray-800">
                     {page.properties.Description.rich_text[0].plain_text}
                   </p>
-                  <small className="mt-4 text-gray-500">{page.properties.Date.date.start}</small>
-                  <div className='mt-4 flex items-center justify-start text-blue-500 text-xl'>{page.properties.Author.avatar_url === null ? <img src={'/favicon.ico'} /> : <img className="rounded-full mr-2" src={page.properties.Author.created_by.avatar_url} width={24} height={24} />}{' '}{page.properties.Author.created_by.name}</div>
+                  <small className="mt-4 text-gray-500">{page.properties.Date.created_time}</small>
+                 
                 </a>
               </Link>
             )

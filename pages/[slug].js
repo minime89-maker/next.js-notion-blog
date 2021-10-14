@@ -25,10 +25,6 @@ const blockPage = (block) => {
 			return (
 				<Heading_2 key={id}>{value.text[0].plain_text}</Heading_2>
 			);
-		case "heading_3":
-			return (
-				<Text key={id} text={value.text} />
-			);
 		case 'callout':
 			return (
 				<Text key={id}>{value.icon.emoji}{' '}{value.text[0]?.plain_text}</Text>
@@ -74,10 +70,10 @@ const Pages = ({ pages, blocks }) => {
 
 	//const header = blocks.find(block => block.type === 'paragraph')
 
-	const header = {
-		title: pages.properties.Name.title[0].plain_text,
+	const head = {
+		title: pages.properties.Name.title[0]?.plain_text,
 		authorImg: pages.properties.Author.created_by.avatar_url,
-		description: pages.properties.Description.rich_text[0].plain_text
+		description: pages.properties.Description.rich_text[0]?.plain_text
 	}
 
 	// console.log({
@@ -89,10 +85,10 @@ const Pages = ({ pages, blocks }) => {
 	return (
 		<Layout>
 			<header className="my-8">
-				<h1 className="text-4xl font-semibold">{header.title}</h1>
-				<h2 className='text-2xl'>{header.description}</h2>
+				<h1 className="text-4xl font-semibold">{head.title}</h1>
+				<h2 className='text-2xl'>{head.description}</h2>
 				<div className='flex items-center pt-2'>
-				<img className='rounded-md h-6 w-6 mr-2' src={header.authorImg} width={24} height={24} />
+				<img className='rounded-md h-6 w-6 mr-2' src={head.authorImg} width={24} height={24} />
 				<p className='text-gray-700'>
 					{pages.properties.Date.created_time}
 				</p>

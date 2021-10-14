@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getDatabase } from '../lib/client'
 
 export const databaseId = process.env.NOTION_DATABASE_ID
@@ -23,29 +24,32 @@ export default function Home({ database }) {
   // })
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen my-8">
       <Head>
         <title>Next | Notion CMS</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-3xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js + Notion Content Management System
-          </a>
-        </h1>
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center divide-y divide-gray-200 px-4">
+        <section className='flex items-start justify-start'>
+          <Image src={`/profile_pic.png`} width="80" height="80" alt='Profile of the Author' className="rounded-md" />
+          <div className="text-left px-4 ">
+            <h1 className='text-xl font-semibold text-gray-900 leading-relaxed'>Ilya Volodarsky</h1>
+            <p className='text-xs text-gray-500 leading-relaxed'>Founder @Segment</p>
+            <p className='text-xs text-gray-500 leading-relaxed mb-3'>Angel Investor in Climate Tech & Healthcare</p>
+            <a className='bg-blue-400 text-white p-1.5 font-semibold rounded-md shadow-md' href="https://twitter.com">Follow me</a>
+          </div>
+        </section>
 
-        <p className="mt-3 text-2xl">
+        {/* <p className="mt-3 text-2xl">
           Get started by editing{' '}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
             Notion Database
           </code>
-        </p>
+        </p> */}
 
         {!database && <p>Loading...</p>}
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
+        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full ">
           {database && database.map((page) => {
             return (
               <Link

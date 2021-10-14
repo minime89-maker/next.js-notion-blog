@@ -1,3 +1,6 @@
+import Prism from 'prismjs';
+import 'prismjs/components/prism-javascript';
+
 export const Layout = ({ children }) => {
 	return <div className="mx-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">{children}</div>
 
@@ -30,6 +33,15 @@ export const Text = ({ text }) => {
 	})
 )}
 
-export const Heading_2 = ({ children, id }) => {
-	return <span className="text-xl font-semibold text-gray-900" key={id}>{children} </span>
+export const Heading_2 = ({ children }) => {
+	return <span className="text-xl font-semibold text-gray-900">{children} </span>
+}
+
+export const Code = ({ children }) => {
+	const js = Prism.highlight(children, Prism.languages.javascript);
+	return (
+	<pre>
+		<code>{js}</code>
+	</pre>
+	)
 }

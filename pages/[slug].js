@@ -70,11 +70,11 @@ const Pages = ({ pages, blocks }) => {
 
 	//const header = blocks.find(block => block.type === 'paragraph')
 
-	//const head = {
+	/* const head = {
 		//title: pages?.properties.Name.title[0]?.plain_text,
 		//authorImg: pages.properties.Author.created_by.avatar_url,
 		//description: pages.properties.Description.rich_text[0]?.plain_text
-	//}
+	} */
 
 	// console.log({
 	// 	page: pages,

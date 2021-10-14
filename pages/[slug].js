@@ -7,10 +7,11 @@ import { databaseId } from './index'
 const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
-	console.log({
-		value: value,
-		block:block
-	})
+	// console.log({
+	// 	value: value,
+	// 	block:block
+	// })
+	
 	switch (type) {
 		case "paragraph":
 			return (
@@ -79,11 +80,11 @@ const Pages = ({ pages, blocks }) => {
 		description: pages.properties.Description.rich_text[0].plain_text
 	}
 
-	console.log({
-		page: pages,
-		blocks: blocks,
-		header: header,
-	})
+	// console.log({
+	// 	page: pages,
+	// 	blocks: blocks,
+	// 	header: header,
+	// })
 
 	return (
 		<Layout>
@@ -100,7 +101,7 @@ const Pages = ({ pages, blocks }) => {
 
 			<main className='mb-8'>
 				{blocks && blocks.map((block) => {
-					console.log(block.Slug)
+					//console.log(block.Slug)
 					return (
 						<div key={block.id}>
 							{blockPage(block)}
@@ -136,7 +137,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const { slug } = params
 	const db = await getDatabase(databaseId)
-	const filter = db.filter(page => page.properties.Slug.rich_text[0].plain_text === slug)
+	const filter = db.filter((page) => page.properties.Slug.rich_text[0]?.plain_text === slug)
 	const pages = await getPages(filter[0].id)
 	const blocks = await getBlocks(filter[0].id)
 	return {

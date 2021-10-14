@@ -7,12 +7,10 @@ export const databaseId = process.env.NOTION_DATABASE_ID
 
 export default function Home({ database }) {
 
-  
-
   /* logging response */
-  console.log({
-    pages: database,
-  })
+  // console.log({
+  //   pages: database,
+  // })
 
   // calculate reading time for each page
   // const pages = database.map(page => {

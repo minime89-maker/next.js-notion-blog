@@ -37,7 +37,7 @@ const blockPage = (block) => {
 		case 'external':
 		case 'unsupported':
 			return (
-				<Image key={id} src={block.image.external.url} width={480} height={360} />	
+				<img key={id} src={block.image.external.url} width={480} height={360} />	
 			)
 		case 'bulleted_list_item':
 			return (

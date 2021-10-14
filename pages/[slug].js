@@ -70,11 +70,11 @@ const Pages = ({ pages, blocks }) => {
 
 	//const header = blocks.find(block => block.type === 'paragraph')
 
-	const head = {
-		title: pages?.properties.Name.title[0]?.plain_text,
-		authorImg: pages.properties.Author.created_by.avatar_url,
-		description: pages.properties.Description.rich_text[0]?.plain_text
-	}
+	//const head = {
+		//title: pages?.properties.Name.title[0]?.plain_text,
+		//authorImg: pages.properties.Author.created_by.avatar_url,
+		//description: pages.properties.Description.rich_text[0]?.plain_text
+	//}
 
 	// console.log({
 	// 	page: pages,
@@ -84,7 +84,7 @@ const Pages = ({ pages, blocks }) => {
 
 	return (
 		<Layout>
-			<header className="my-8">
+			/* <header className="my-8">
 				<h1 className="text-4xl font-semibold">{head.title}</h1>
 				<h2 className='text-2xl'>{head.description}</h2>
 				<div className='flex items-center pt-2'>
@@ -93,7 +93,7 @@ const Pages = ({ pages, blocks }) => {
 					{pages.properties.Date.created_time}
 				</p>
 				</div>
-			</header>
+			</header> */
 
 			<main className='mb-8'>
 				{blocks && blocks.map((block) => {

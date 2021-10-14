@@ -84,7 +84,7 @@ const Pages = ({ pages, blocks }) => {
 
 	return (
 		<Layout>
-			/* <header className="my-8">
+			{/* <header className="my-8">
 				<h1 className="text-4xl font-semibold">{head.title}</h1>
 				<h2 className='text-2xl'>{head.description}</h2>
 				<div className='flex items-center pt-2'>
@@ -93,7 +93,7 @@ const Pages = ({ pages, blocks }) => {
 					{pages.properties.Date.created_time}
 				</p>
 				</div>
-			</header> */
+			</header> */}
 
 			<main className='mb-8'>
 				{blocks && blocks.map((block) => {

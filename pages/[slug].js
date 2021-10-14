@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Head from 'next/head'
-import {Layout, Text, Heading_2} from '../components/layout'
+import { Layout, Text, Heading_2, Code } from '../components/layout'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 
@@ -35,7 +34,7 @@ const blockPage = (block) => {
 			)
 		case 'code':
 			return (
-				<Text key={id} text={value.text[0]?.plain_text} />
+				<Code key={id} >{value.text[0].plain_text}</Code>
 			)
 		case 'image':
 		case 'external':

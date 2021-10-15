@@ -18,7 +18,7 @@ export const Text = ({ text }) => {
 			<span
 				key={id}
 				className={[
-					'text-md',
+					'text-md leading-relax',
 					bold ? 'font-bold' : '',
 					italic ? 'font-italic' : '',
 					underline ? 'underline' : '',
@@ -34,7 +34,7 @@ export const Text = ({ text }) => {
 )}
 
 export const Heading_2 = ({ children }) => {
-	return <span className="text-xl font-semibold text-gray-900">{children} </span>
+	return <span className="text-xl font-semibold text-gray-900 leading-relax"><br />{children}</span>
 }
 
 export const Code = ({ children }) => {

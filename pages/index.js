@@ -88,7 +88,7 @@ export default function Home({ database }) {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
+          <img src="/profile_pic.png" alt="Vercel Logo" className="h-8 ml-2" />
         </a>
       </footer>
     </div>

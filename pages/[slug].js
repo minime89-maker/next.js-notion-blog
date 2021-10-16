@@ -79,14 +79,14 @@ const Pages = ({ pages, blocks }) => {
 		<Layout>
 			{pages && (
 					<header key={pages.id} className='pb-8'>
-						<h1 className="text-3xl font-semibold text-gray-900">{pages.properties.Name.title[0]?.plain_text}</h1>
+						<h1 className="text-3xl font-semibold text-textPrimary">{pages.properties.Name.title[0]?.plain_text}</h1>
 						<div className='flex items-center py-2'>
 							<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
-							<small className='text-gray-700'>
+							<small className='text-textTertiary'>
 								{pages.properties.Date.created_time}
 							</small>
 						</div>
-						<h2 className='text-xl text-gray-700'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
+						<h2 className='text-xl text-textSecondary'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
 						
 					</header>
 				)
@@ -102,7 +102,7 @@ const Pages = ({ pages, blocks }) => {
 				})}
 				<div className='py-4'>
 					<Link href='/'>
-						<a className='text-purple-800 font-semibold hover:underline text-xl'>Back to home</a>
+						<a className='bg-button p-2 rounded-md text-textButton font-semibold text-lg'>{'<'} Back to home</a>
 					</Link>
 				</div>
 			</main>

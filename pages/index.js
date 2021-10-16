@@ -2,15 +2,16 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getDatabase } from '../lib/client'
+import { Footer } from '../components/layout'
 
 export const databaseId = process.env.NOTION_DATABASE_ID
 
 export default function Home({ database }) {
 
   /* logging response */
-  // console.log({
-  //   pages: database,
-  // })
+  console.log({
+    pages: database,
+  })
 
   // calculate reading time for each page
   // const pages = database.map(page => {
@@ -22,22 +23,21 @@ export default function Home({ database }) {
   // })
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen my-8">
+    <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-backgroundColor">
       <Head>
         <title>Next | Notion CMS</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 text-center divide-y divide-gray-200 px-4">
-        <section className='flex items-start justify-start'>
-          <Image src={`/profile_pic.png`} width="80" height="80" alt='Profile of the Author' className="rounded-md" />
-          <div className="text-left px-4 ">
-            <h1 className='text-xl font-semibold text-gray-900 leading-relaxed'>Ilya Volodarsky</h1>
-            <p className='text-xs text-gray-500 leading-relaxed'>Founder @Segment</p>
-            <p className='text-xs text-gray-500 leading-relaxed mb-3'>Angel Investor in Climate Tech & Healthcare</p>
-            <a className='bg-blue-400 text-white p-1.5 font-semibold rounded-md shadow-md' href="https://twitter.com">Follow me</a>
+      <main className="flex flex-col items-center justify-center w-full flex-1 text-center ">
+        <nav className='flex items-center justify-between bg-navigationBar w-full p-4'>
+          <Image src={`/profile_pic.png`} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
+          <div className="text-left pl-4 ">
+            <h2 className='text-xl font-semibold text-gray-900 leading-relaxed'>Ilya Volodarsky</h2>
+            <p className='text-xs text-textPrimary leading-relaxed'>Founder @Segment</p>
+            <p className='text-xs text-textSecondary leading-relaxed mb-3'>Angel Investor in Climate Tech & Healthcare</p>
           </div>
-        </section>
+        </nav>
 
         {/* <p className="mt-3 text-2xl">
           Get started by editing{' '}
@@ -56,11 +56,11 @@ export default function Home({ database }) {
               >
                 <a className="p-4 mt-4 text-left  w-96  hover:text-blue-600 focus:text-blue-600">
                 {/* <div className='mt-4  mb-2 text-gray-700 flex items-center'>{page.properties.Author.avatar_url === null ? <img src={'/favicon.ico'} /> : <img className="rounded-md w-6 h-6 mr-2" src={page.properties.Author.created_by.avatar_url} width={64} height={64} />}{' '}{page.properties.Author.created_by.name}</div> */}
-                  <h3 className="text-xl font-semibold text-gray-900">{page.properties.Name.title[0].plain_text}</h3>
-                  <p className="mt-4 text-md text-gray-800">
+                  <h1 className="text-xl font-semibold text-textPrimary">{page.properties.Name.title[0].plain_text}</h1>
+                  <p className="mt-4 text-md text-textSecondary">
                     {page.properties.Description.rich_text[0].plain_text}
                   </p>
-                  <small className="mt-4 text-gray-500">{page.properties.Date.created_time}</small>
+                  <small className="mt-4 text-textTertiary">{page.properties.Date.created_time}</small>
                  
                 </a>
               </Link>
@@ -80,7 +80,7 @@ export default function Home({ database }) {
         </div>
       </main>
 
-      <footer className="flex mt-4 items-center justify-center w-full h-10 border-t">
+      {/* <footer className="flex mt-4 items-center justify-center w-full h-10 border-t">
         <a
           className="flex items-center justify-center"
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -90,7 +90,8 @@ export default function Home({ database }) {
           Powered by{' '}
           <img src="/profile_pic.png" alt="Vercel Logo" className="h-8 ml-2" />
         </a>
-      </footer>
+      </footer> */}
+      <Footer />
     </div>
   )
 }

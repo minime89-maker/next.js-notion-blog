@@ -6,6 +6,23 @@ export const Layout = ({ children }) => {
 
 }
 
+export const Footer = () => {
+	return (
+		<footer className='mt-12'>
+			<div className="flex item-center justify-center space-x-2">
+				<box-icon name='twitter' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='facebook-square' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='discord' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='dev-to' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='medium-square' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='instagram-alt' type='logo' color='#2c7a7b' ></box-icon>
+				<box-icon name='linkedin-square' type='logo' color='#2c7a7b' ></box-icon>
+			</div>
+			<p className='mt-2 text-textTertiary'>© 2021 Ilya Volodarsky. All Rights Reserved.</p>
+		</footer>
+	)
+}
+
 // rich_text component for annotations
 export const Text = ({ text }) => {
 	{!text && null}

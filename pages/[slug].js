@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Layout, Text, Heading_2, Code } from '../components/layout'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
+import { format } from 'date-fns'
 
 const blockPage = (block) => {
 	const { type, id } = block
@@ -11,11 +12,11 @@ const blockPage = (block) => {
 	// 	value: value,
 	// 	block:block
 	// })
-	
+
 	switch (type) {
 		case "paragraph":
 			return (
-					<Text key={id} text={value.text} />
+				<Text key={id} text={value.text} />
 			);
 		case "heading_1":
 			return (
@@ -37,7 +38,7 @@ const blockPage = (block) => {
 		case 'external':
 		case 'unsupported':
 			return (
-				<img key={id} src={block.image.external.url} width={480} height={360} />	
+				<img key={id} src={block.image.external.url} width={480} height={360} />
 			)
 		case 'bulleted_list_item':
 			return (
@@ -46,11 +47,11 @@ const blockPage = (block) => {
 				</li>
 			)
 		case 'numbered_list_item':
-		return (
-			<li>
-				<Text text={value.text} />
-			</li>
-		)
+			return (
+				<li>
+					<Text text={value.text} />
+				</li>
+			)
 		case 'quote':
 			return (
 				<blockquote>
@@ -73,23 +74,21 @@ const Pages = ({ pages, blocks }) => {
 	//	blocks
 	// })
 
-	
-
 	return (
 		<Layout>
 			{pages && (
-					<header key={pages.id} className='pb-8'>
-						<h1 className="text-3xl font-semibold text-textPrimary">{pages.properties.Name.title[0]?.plain_text}</h1>
-						<div className='flex items-center py-2'>
-							<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
-							<small className='text-textTertiary'>
-								{pages.properties.Date.created_time}
-							</small>
-						</div>
-						<h2 className='text-xl text-textSecondary'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
-						
-					</header>
-				)
+				<header key={pages.id} className='pb-8'>
+					<h1 className="text-3xl font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
+					<div className='flex items-center py-2'>
+						<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
+						<small className='text-textTertiary dark:text-textTertiaryDark'>
+							{format(new Date(pages.properties.Date.created_time), 'MMMM dd, yyyy')}
+						</small>
+					</div>
+					<h2 className='text-xl text-textSecondary dark:text-textSecondaryDark'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
+
+				</header>
+			)
 			}
 
 			<main className='mb-8'>
@@ -102,12 +101,12 @@ const Pages = ({ pages, blocks }) => {
 				})}
 				<div className='py-4'>
 					<Link href='/'>
-						<a className='bg-button p-2 rounded-md text-textButton font-semibold text-lg'>{'<'} Back to home</a>
+						<a className='bg-button p-3 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'>{'<'} Back to home</a>
 					</Link>
 				</div>
 			</main>
 
-			
+
 		</Layout>
 	)
 }

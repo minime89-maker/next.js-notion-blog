@@ -2,23 +2,22 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 
 export const Layout = ({ children }) => {
-	return <div className="mx-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">{children}</div>
+	return <div className="px-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl pt-6 sm:w-full dark:bg-backgroundDark">{children}</div>
 
 }
 
 export const Footer = () => {
 	return (
-		<footer className='mt-12'>
-			<div className="flex item-center justify-center space-x-2">
-				<box-icon name='twitter' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='facebook-square' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='discord' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='dev-to' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='medium-square' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='instagram-alt' type='logo' color='#2c7a7b' ></box-icon>
-				<box-icon name='linkedin-square' type='logo' color='#2c7a7b' ></box-icon>
+		<footer className='py-6 w-full text-center'>
+			<div className="flex item-center justify-center">
+				<a href='https://twitter.com' target='_blank'  aria-label='Twitter'>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C7A7B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+				</a>
+				<a href='https://facebook.com' target='_blank' aria-label='Facebook'>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C7A7B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+				</a>
 			</div>
-			<p className='mt-2 text-textTertiary'>© 2021 Ilya Volodarsky. All Rights Reserved.</p>
+			<p className='mt-2 text-textTertiary dark:text-textTertiaryDark'>© 2021 Ilya Volodarsky. All Rights Reserved.</p>
 		</footer>
 	)
 }
@@ -35,7 +34,7 @@ export const Text = ({ text }) => {
 			<span
 				key={id}
 				className={[
-					'text-md leading-relax',
+					'text-md leading-relax dark:text-textSecondaryDark',
 					bold ? 'font-bold' : '',
 					italic ? 'font-italic' : '',
 					underline ? 'underline' : '',
@@ -51,7 +50,7 @@ export const Text = ({ text }) => {
 )}
 
 export const Heading_2 = ({ children }) => {
-	return <span className="text-xl font-semibold text-gray-900 leading-relax"><br />{children}</span>
+	return <span className="text-xl font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</span>
 }
 
 export const Code = ({ children }) => {

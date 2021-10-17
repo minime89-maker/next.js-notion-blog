@@ -1,17 +1,19 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import Head from 'next/head'
 import { Layout, Text, Heading_2, Code } from '../components/layout'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 import { format } from 'date-fns'
+import Template from '../components/home'
 
 const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
-	// console.log({
-	// 	value: value,
-	// 	block:block
-	// })
+	console.log({
+		value: value,
+		block:block
+	})
 
 	switch (type) {
 		case "paragraph":
@@ -75,23 +77,27 @@ const Pages = ({ pages, blocks }) => {
 	// })
 
 	return (
-		<Layout>
+		<Template>
+			<Head>
+				<title>Post Title</title>
+			</Head>
+			
+			<section>
 			{pages && (
-				<header key={pages.id} className='pb-8'>
+				<div key={pages.id} className='pb-8'>
 					<h1 className="text-3xl font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
 					<div className='flex items-center py-2'>
 						<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
-							{format(new Date(pages.properties.Date.created_time), 'MMMM dd, yyyy')}
+							{format(new Date(pages.properties.Date.created_time), 'MMM dd, yyyy')}
 						</small>
 					</div>
 					<h2 className='text-xl text-textSecondary dark:text-textSecondaryDark'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
-
-				</header>
-			)
-			}
-
-			<main className='mb-8'>
+				</div>
+			)}
+			</section>
+			
+			<article className='mb-8'>
 				{blocks && blocks.map((block) => {
 					return (
 						<div key={block.id}>
@@ -99,15 +105,9 @@ const Pages = ({ pages, blocks }) => {
 						</div>
 					)
 				})}
-				<div className='py-4'>
-					<Link href='/'>
-						<a className='bg-button p-3 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'>{'<'} Back to home</a>
-					</Link>
-				</div>
-			</main>
-
-
-		</Layout>
+				
+			</article>
+		</Template>
 	)
 }
 
@@ -121,6 +121,7 @@ export async function getStaticPaths() {
 			params: {
 				id: page.id,
 				slug: page.properties.Slug.rich_text[0].plain_text
+				
 			}
 		})),
 		fallback: true

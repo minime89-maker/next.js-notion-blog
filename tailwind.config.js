@@ -8,8 +8,6 @@ module.exports = {
       colors: {
         backgroundColor: '#F9F5F1',
         backgroundDark: '#202023',
-        navigationBar: '#F0E7DB',
-        navigationDark: '#313135',
         button: '#319795',
         buttonDark: '#81E6D9',
         social: '#2C7A7B',

@@ -2,7 +2,7 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
 
 export const Layout = ({ children }) => {
-	return <div className="px-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl pt-6 sm:w-full dark:bg-backgroundDark">{children}</div>
+	return <div className="px-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl pt-6 sm:w-full bg-backgroundColor dark:bg-backgroundDark">{children}</div>
 
 }
 

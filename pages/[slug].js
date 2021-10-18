@@ -1,31 +1,40 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Layout, Text, Heading_2, Code } from '../components/layout'
+import Head from 'next/head'
+import { Text, Heading_2, Code, Heading_1, Heading_3 } from '../components/template'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 import { format } from 'date-fns'
+import Layout from '../components/layout'
 
 const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
-	// console.log({
-	// 	value: value,
-	// 	block:block
-	// })
+	
+	console.log({
+		block:block,
+	})
 
 	switch (type) {
 		case "paragraph":
 			return (
-				<Text key={id} text={value.text} />
+				<p>
+					<Text key={id} text={value.text} />
+				</p>
 			);
+	
 		case "heading_1":
 			return (
-				<Text key={id} text={value.text} />
+					<Heading_1 key={id}>{value.text[0].plain_text}</Heading_1>
 			);
 		case "heading_2":
 			return (
 				<Heading_2 key={id}>{value.text[0].plain_text}</Heading_2>
 			);
+		case 'heading_3':
+			return (
+				<Heading_3 key={id}>{value.text[0].plain_text}</Heading_3>
+			)
 		case 'callout':
 			return (
 				<Text key={id}>{value.icon.emoji}{' '}{value.text[0]?.plain_text}</Text>
@@ -35,17 +44,10 @@ const blockPage = (block) => {
 				<Code key={id} >{value.text[0].plain_text}</Code>
 			)
 		case 'image':
-		case 'external':
-		case 'unsupported':
 			return (
-				<img key={id} src={block.image.external.url} width={480} height={360} />
+				<Image key={id} src={block.image.external.url} width='100%' height='50%' layout='responsive' className=' max-w-2xl' />
 			)
 		case 'bulleted_list_item':
-			return (
-				<li>
-					<Text text={value.text} />
-				</li>
-			)
 		case 'numbered_list_item':
 			return (
 				<li>
@@ -69,44 +71,41 @@ const blockPage = (block) => {
 
 const Pages = ({ pages, blocks }) => {
 
-	// console.log({
-	// 	pages,
-	//	blocks
-	// })
+	console.log({
+		pages,
+		blocks
+	})
 
 	return (
 		<Layout>
+			<Head>
+				<title>{pages[0]?.properties.Slug.rich_text[0]?.plain_text}</title>
+			</Head>
+
+			<section className="max-w-3xl mx-auto">
 			{pages && (
-				<header key={pages.id} className='pb-8'>
+				<div key={pages.id} className='pb-2'>
 					<h1 className="text-3xl font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
 					<div className='flex items-center py-2'>
 						<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
-							{format(new Date(pages.properties.Date.created_time), 'MMMM dd, yyyy')}
+							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}
 						</small>
 					</div>
-					<h2 className='text-xl text-textSecondary dark:text-textSecondaryDark'>{pages.properties.Description.rich_text[0]?.plain_text}</h2>
-
-				</header>
-			)
-			}
-
-			<main className='mb-8'>
+					<p className='text-md text-textSecondary dark:text-textSecondaryDark'>{pages.properties.Description.rich_text[0]?.plain_text}</p>
+				</div>
+			)}
+			</section>
+			
+			<article className='max-w-3xl mx-auto'>
 				{blocks && blocks.map((block) => {
 					return (
-						<div key={block.id}>
+						<span key={block.id} >
 							{blockPage(block)}
-						</div>
+						</span>
 					)
 				})}
-				<div className='py-4'>
-					<Link href='/'>
-						<a className='bg-button p-3 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'>{'<'} Back to home</a>
-					</Link>
-				</div>
-			</main>
-
-
+			</article>
 		</Layout>
 	)
 }

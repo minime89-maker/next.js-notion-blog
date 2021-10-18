@@ -18,7 +18,7 @@ const blockPage = (block) => {
 	switch (type) {
 		case "paragraph":
 			return (
-				<p>
+				<p className='my-2'>
 					<Text key={id} text={value.text} />
 				</p>
 			);
@@ -43,9 +43,12 @@ const blockPage = (block) => {
 			return (
 				<Code key={id} >{value.text[0].plain_text}</Code>
 			)
+		
 		case 'image':
+			const src = value.type === 'external' ? value.external.url : value.file.url
+			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
-				<Image key={id} src={block.image.external.url} width='100%' height='50%' layout='responsive' className=' max-w-2xl' />
+				<Image key={id} src={src} alt={caption} width='100%' height='50%' layout='responsive' className='my-2  max-w-2xl' />
 			)
 		case 'bulleted_list_item':
 		case 'numbered_list_item':
@@ -87,7 +90,7 @@ const Pages = ({ pages, blocks }) => {
 				<div key={pages.id} className='pb-2'>
 					<h1 className="text-3xl font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
 					<div className='flex items-center py-2'>
-						<img className='rounded-md h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
+						<img className='rounded-md h-6 w-6 mr-2' src={'/profile_pic.png'} width={12} height={12} />
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
 							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}
 						</small>
@@ -100,7 +103,7 @@ const Pages = ({ pages, blocks }) => {
 			<article className='max-w-3xl mx-auto'>
 				{blocks && blocks.map((block) => {
 					return (
-						<span key={block.id} >
+						<span key={block.id}>
 							{blockPage(block)}
 						</span>
 					)
@@ -138,6 +141,6 @@ export async function getStaticProps({ params }) {
 			pages,
 			blocks
 		},
-		/* revalidate: 1 */
+		revalidate: 1
 	}
 }

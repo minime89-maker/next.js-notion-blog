@@ -12,15 +12,15 @@ const Home = ({ database }) => {
   const { theme } = useTheme()
 
   /* logging response */
-  console.log({
-    pages: database,
-    theme: theme
-  })
+  // console.log({
+  //   pages: database,
+  //   theme: theme
+  // })
 
   return (
-    <Layout home name={database[0]?.properties.Author.created_by.name} >
+    <Layout home >
       <Head>
-        <title>Notion's Blog</title>
+        <title>Minja's Blog</title>
       </Head>
 
       <section>

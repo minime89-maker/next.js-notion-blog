@@ -1,63 +1,91 @@
-import Prism from 'prismjs';
-import 'prismjs/components/prism-javascript';
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
-export const Layout = ({ children }) => {
-	return <div className="px-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl pt-6 sm:w-full bg-backgroundColor dark:bg-backgroundDark">{children}</div>
+const Layout = ({ children, home }) => {
 
-}
+	const {theme, setTheme} = useTheme()
 
-export const Footer = () => {
 	return (
-		<footer className='py-6 w-full text-center'>
-			<div className="flex item-center justify-center">
-				<a href='https://twitter.com' target='_blank'  aria-label='Twitter'>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C7A7B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-				</a>
-				<a href='https://facebook.com' target='_blank' aria-label='Facebook'>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C7A7B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"> <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-				</a>
-			</div>
-			<p className='mt-2 text-textTertiary dark:text-textTertiaryDark'>© 2021 Ilya Volodarsky. All Rights Reserved.</p>
-		</footer>
+		<div className="container mx-auto my-auto min-w-full min-h-screen bg-backgroundColor dark:bg-backgroundDark">
+			<Head>
+				<meta
+					name='description'
+					content="Create Blog never was easier"
+				/>
+				<meta
+					property='og:title'
+					content="Notion's Blog"
+				/>
+			</Head>
+
+			<header className="flex justify-between items-center">
+				{home ? (
+					<>
+						<nav className='flex items-start justify-between w-full px-4 pt-8'>
+							<Image src={'/profile_pic.png'} width="100" height="100" alt='Profile of the Author' className="rounded-full" />
+							<div className="text-left ml-2 ">
+								<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Ilya Volodarsky</h2>
+								<p className='text-xs text-textPrimary leading-relaxed dark:text-textSecondaryDark'>Founder @Segment</p>
+            <p className='text-xs text-textSecondary leading-relaxed dark:text-textSecondaryDark'>Angel Investor in Climate Tech & Healthcare</p>
+							</div>
+							<button
+								aria-label="Toggle Dark Mode"
+								type="button"
+								className='ml-8'
+								//className="animate-spin"
+								onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+							>
+								{theme === 'dark' ? <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#eee" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A202C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>}
+							</button>
+						</nav>
+					</>
+				) :
+					(
+						<>
+							<nav className='flex items-center justify-between w-full p-6'>
+								<Link href="/">
+									<a>
+									<Image src={'/profile_pic.png'} width="40" height="40" alt='Profile of the Author' className="rounded-full" />
+									</a>
+								</Link>
+								
+								<div className="text-left pl-4 ">
+									<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Ilya Volodarsky</h2>
+									{/* <p className='text-xs text-textPrimary leading-relaxed dark:text-textSecondaryDark'>Founder @Segment</p>
+            <p className='text-xs text-textSecondary leading-relaxed mb-3 dark:text-textSecondaryDark'>Angel Investor in Climate Tech & Healthcare</p> */}
+								</div>
+								<button
+									aria-label="Toggle Dark Mode"
+									type="button"
+									className='order-last ml-24'
+									//className="animate-spin"
+									onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+								>
+									{theme === 'dark' ? <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#eee" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5" /><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1A202C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>}
+								</button>
+							</nav>
+						</>
+					)}
+			</header>
+
+			<main className="container mx-auto my-auto">{children}</main>
+
+			{!home && (
+				<div className='pt-8 pb-2 mx-auto md:text-center'>
+					<Link href='/'>
+						<a className='bg-button p-2 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'> Back to home</a>
+					</Link>
+				</div>
+			)}
+
+			<footer>
+				<p className="text-center text-textTertiary dark:text-textTertiaryDark py-4">Copyright Notion 2021. All rights reserved.</p>
+			</footer>
+
+		</div>
 	)
 }
 
-// rich_text component for annotations
-export const Text = ({ text }) => {
-	{!text && null}
-	return (text && text.map((value, id) => {
-		const {
-			annotations: { bold, italic, underline, strikethrough, code, color },
-			text,
-		} = value
-		return (
-			<span
-				key={id}
-				className={[
-					'text-md leading-relax dark:text-textSecondaryDark',
-					bold ? 'font-bold' : '',
-					italic ? 'font-italic' : '',
-					underline ? 'underline' : '',
-					strikethrough ? 'line-through' : '',
-					code ? 'text-red-800' : '',
-				].join(' ')}
-				style={color !== 'default' ? { color } : {}}
-			>
-				{text.link ? <a href={text.link.url} className='underline text-blue-800'>{text.content}</a> : text.content}
-			</span>
-		)
-	})
-)}
-
-export const Heading_2 = ({ children }) => {
-	return <span className="text-xl font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</span>
-}
-
-export const Code = ({ children }) => {
-	const js = Prism.highlight(children, Prism.languages.javascript);
-	return (
-	<pre>
-		<code>{js}</code>
-	</pre>
-	)
-}
+export default Layout

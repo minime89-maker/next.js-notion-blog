@@ -79,7 +79,7 @@ const Pages = ({ pages, blocks }) => {
 	return (
 		<Layout>
 			<Head>
-				<title>{pages[0]?.properties.Slug.rich_text[0]?.plain_text}</title>
+				<title>{pages && pages.properties.Slug.rich_text[0]?.plain_text}</title>
 			</Head>
 
 			<section className="max-w-3xl mx-auto">

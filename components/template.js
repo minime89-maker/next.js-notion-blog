@@ -1,10 +1,4 @@
 import Prism from 'prismjs';
-import 'prismjs/components/prism-javascript';
-
-// export const Layout = ({ children }) => {
-// 	return <div className="px-4 text-gray-800 flex flex-col flex-wrap items-center justify-around max-w-4xl pt-6 sm:w-full bg-backgroundColor dark:bg-backgroundDark">{children}</div>
-
-// }
 
 export const Footer = () => {
 	return (
@@ -36,36 +30,36 @@ export const Text = ({ text }) => {
 				className={[
 					'text-md leading-relax dark:text-textSecondaryDark',
 					bold ? 'font-bold' : '',
-					italic ? 'font-italic' : '',
+					italic ? 'italic' : '',
 					underline ? 'underline' : '',
 					strikethrough ? 'line-through' : '',
-					code ? 'text-red-800' : '',
+					code ? 'bg-gray-200 py-1 px-2 rounded-sm text-sm' : '',
 				].join(' ')}
 				style={color !== 'default' ? { color } : {}}
 			>
-				{text.link ? <a href={text.link.url} className='underline text-textLinks hover:opacity-60'>{text.content}</a> : text.content}
+				{text.link ? <a href={text.link.url} target='_blank' className='underline text-social dark:text-socialDark hover:opacity-60'>{text.content}</a> : text.content}
 			</span>
 		)
 	})
 )}
 
 export const Heading_1 = ({ children }) => {
-	return <p className="text-2xl font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</p>
+	return <h1 className="text-4xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h1>
 }
 
 export const Heading_2 = ({ children }) => {
-	return <p className="text-xl font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</p>
+	return <h2 className="text-3xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h2>
 }
 
 export const Heading_3 = ({ children }) => {
-	return <p className="text-lg font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</p>
+	return <h3 className="text-2xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h3>
 }
 
 export const Code = ({ children }) => {
 	const js = Prism.highlight(children, Prism.languages.javascript);
 	return (
 	<pre>
-		<code>{js}</code>
+		<code className='bg-gray-300 py-1 px-2'>{js}</code>
 	</pre>
 	)
 }

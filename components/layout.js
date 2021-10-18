@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
-const Layout = ({ children, home }) => {
+const Layout = ({ children, home, name, about_me }) => {
 
 	const {theme, setTheme} = useTheme()
 
@@ -26,9 +26,9 @@ const Layout = ({ children, home }) => {
 						<nav className='flex items-start justify-between w-full px-4 pt-8'>
 							<Image src={'/profile_pic.png'} width="100" height="100" alt='Profile of the Author' className="rounded-full" />
 							<div className="text-left ml-2 ">
-								<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Ilya Volodarsky</h2>
-								<p className='text-xs text-textPrimary leading-relaxed dark:text-textSecondaryDark'>Founder @Segment</p>
-            <p className='text-xs text-textSecondary leading-relaxed dark:text-textSecondaryDark'>Angel Investor in Climate Tech & Healthcare</p>
+								<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>{name}</h2>
+								<p className='text-xs leading-relaxed text-textPrimary dark:text-textSecondaryDark'>{about_me}</p>
+            {/* <p className='text-xs text-textSecondary leading-relaxed dark:text-textSecondaryDark'>Angel Investor in Climate Tech & Healthcare</p> */}
 							</div>
 							<button
 								aria-label="Toggle Dark Mode"
@@ -70,12 +70,12 @@ const Layout = ({ children, home }) => {
 					)}
 			</header>
 
-			<main className="container mx-auto my-auto">{children}</main>
+			<main className="container mx-auto my-auto px-4">{children}</main>
 
 			{!home && (
 				<div className='pt-8 pb-2 mx-auto md:text-center'>
 					<Link href='/'>
-						<a className='bg-button p-2 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'> Back to home</a>
+						<a className='bg-button p-2 mx-2 rounded-md text-textButton font-semibold text-lg dark:bg-buttonDark dark:text-textSecondary'> Back to home</a>
 					</Link>
 				</div>
 			)}

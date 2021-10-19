@@ -1,5 +1,5 @@
 import Prism from 'prismjs';
-import 'prismjs/components/prism-jsx'
+import { useEffect } from 'react';
 
 // rich_text component for annotations
 export const Text = ({ text }) => {
@@ -18,7 +18,7 @@ export const Text = ({ text }) => {
 					italic ? 'italic' : '',
 					underline ? 'underline' : '',
 					strikethrough ? 'line-through' : '',
-					code ? 'bg-gray-200 py-1 px-2 rounded-sm text-sm' : '',
+					code ? 'bg-gray-200 py-1 px-2 rounded-sm text-sm font-mono' : '',
 				].join(' ')}
 				style={color !== 'default' ? { color } : {}}
 			>
@@ -29,26 +29,26 @@ export const Text = ({ text }) => {
 )}
 
 export const Heading_1 = ({ children }) => {
-	return <h1 className="text-4xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h1>
+	return <h1 className="text-4xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h1>
 }
 
 export const Heading_2 = ({ children }) => {
-	return <h2 className="text-3xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h2>
+	return <h2 className="text-3xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h2>
 }
 
 export const Heading_3 = ({ children }) => {
-	return <h3 className="text-2xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark">{children}</h3>
+	return <h3 className="text-2xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h3>
 }
 
-export const Code = ({ children, language = 'javascript' }) => {
+export const Code = ({ children }) => {
+	
+	useEffect(() => {
+		Prism.highlightAll();
+	}, [])
+
 	return (
-		<>
 			<pre>
-				<code dangerouslySetInnerHTML={{
-					__html: Prism.highlight(children,
-						Prism.languages[language.toLowerCase()])
-				}} />
+				<code className='language-javascript'>{children}</code>
 			</pre>
-		</>
 	)
 }

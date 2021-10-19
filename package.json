@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@carbon/type": "^10.37.0",
     "@notionhq/client": "^0.4.3",
     "date-fns": "^2.25.0",
     "next": "latest",

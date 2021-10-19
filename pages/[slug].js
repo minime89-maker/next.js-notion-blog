@@ -48,7 +48,7 @@ const blockPage = (block) => {
 			const src = value.type === 'external' ? value.external.url : value.file.url
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
-				<Image key={id} src={src} alt={caption} width='100%' height='50%' layout='responsive' className='my-2  max-w-2xl' />
+				<Image key={id} src={src} alt={caption} width='100%' height='50%' layout='responsive' className='my-2 rounded-md shadow-sm max-w-2xl' />
 			)
 		case 'bulleted_list_item':
 		case 'numbered_list_item':
@@ -85,17 +85,18 @@ const Pages = ({ pages, blocks }) => {
 				<title>{pages && pages.properties.Slug.rich_text[0]?.plain_text}</title>
 			</Head>
 
-			<section className="max-w-3xl mx-auto">
+			<section className="max-w-3xl mx-auto mb-12">
 			{pages && (
 				<div key={pages.id} className='pb-2'>
-					<h1 className="text-3xl font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
-					<div className='flex items-center py-2'>
-						<img className='rounded-md h-6 w-6 mr-2' src={'/profile_pic.png'} width={12} height={12} />
+					<h1 className="text-4xl leading-relaxed font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
+					<div className='flex items-center py-2 '>
+						<img className='rounded-full h-6 w-6 mr-2' src={'/profile_pic.png'} width={12} height={12} />
+						<small>{pages.properties.Author.created_by.name}&nbsp;|&nbsp;</small>
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
 							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}
 						</small>
 					</div>
-					<p className='text-md text-textSecondary dark:text-textSecondaryDark'>{pages.properties.Description.rich_text[0]?.plain_text}</p>
+					<p className='text-md text-textSecondary dark:text-textSecondaryDark '>{pages.properties.Description.rich_text[0]?.plain_text}</p>
 				</div>
 			)}
 			</section>

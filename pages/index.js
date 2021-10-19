@@ -24,14 +24,14 @@ const Home = ({ database }) => {
       </Head>
 
       <section>
-      <div className="flex flex-wrap items-start justify-center max-w-3xl mt-6 mx-auto sm:w-full">
+      <div className="flex flex-col items-start justify-center max-w-3xl mt-6 mx-auto sm:w-full">
            {database && database.map((page) => {
              return (
                <Link
                  key={page.id}
                  href={`/${page.properties.Slug.rich_text[0].plain_text}`}
                >
-                 <a className="p-4 mt-4 text-left  w-96  hover:text-blue-600 focus:text-blue-600">
+                 <a className="p-4 mt-4 text-left max-w-3xl  hover:text-blue-600 focus:text-blue-600">
                    <h1 className="text-xl font-semibold text-textPrimary dark:text-textPrimaryDark hover:text-social hover:underline">{page.properties.Name.title[0].plain_text}</h1>
                    <p className="mt-1.5 my-4 text-md text-textSecondary dark:text-textSecondaryDark">
                      {page.properties.Description.rich_text[0].plain_text}

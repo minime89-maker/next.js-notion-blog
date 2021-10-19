@@ -23,8 +23,8 @@ const Layout = ({ children, home }) => {
 			<header className="flex justify-between items-center">
 				{home ? (
 					<>
-						<nav className='flex items-center justify-between w-full px-4 pt-8'>
-							<Image src={'/profile_pic.png'} width="100" height="100" alt='Profile of the Author' className="rounded-full" />
+						<nav className='flex items-center justify-between w-full p-8'>
+							<Image src={'/profile_pic.png'} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 							<div className="text-left ml-2 ">
 								<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Minja Popovic</h2>
 								<p className='text-xs leading-relaxed text-textPrimary dark:text-textSecondaryDark'>Writing about JavaScript, React, Next.js and Tailwind</p>
@@ -42,16 +42,17 @@ const Layout = ({ children, home }) => {
 				) :
 					(
 						<>
-							<nav className='flex items-center justify-between w-full p-6'>
+							<nav className='flex items-center justify-between w-full p-8'>
 								<Link href="/">
-									<a>
-									<Image src={'/profile_pic.png'} width="40" height="40" alt='Profile of the Author' className="rounded-full" />
+									<a className="text-4xl font-bold hover:text-textLinks">
+									{/* <Image src={'/profile_pic.png'} width="40" height="40" alt='Profile of the Author' className="rounded-full" /> */}
+									Blog
 									</a>
 								</Link>
 								
-								<div className="text-left pl-4 ">
+								{/* <div className="text-left pl-4 ">
 									<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Minja Popovic</h2>
-								</div>
+								</div> */}
 								<button
 									aria-label="Toggle Dark Mode"
 									type="button"
@@ -65,7 +66,7 @@ const Layout = ({ children, home }) => {
 					)}
 			</header>
 
-			<main className="container mx-auto my-auto px-4">
+			<main className="container mx-auto my-auto px-8 max-w-3xl">
 			{children}
 			{!home && (
 				<div className="mt-10 mb-20">

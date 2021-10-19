@@ -9,6 +9,6 @@ It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-
 
 ## How to use
 
-Customize [`Notion page`](https://nextjs-blog.notion.site/c5016cb232e746368af74ed0bb2ebd5f?v=881273e1b8534774becdb88aebe1df14) to create own post.
+Customize [`Notion page`](https://nextjs-blog.notion.site/c5016cb232e746368af74ed0bb2ebd5f?v=881273e1b8534774becdb88aebe1df14) to create your own blog post.
 
 

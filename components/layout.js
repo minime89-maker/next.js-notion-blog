@@ -23,7 +23,7 @@ const Layout = ({ children, home }) => {
 			<header className="flex justify-between items-center">
 				{home ? (
 					<>
-						<nav className='flex items-center justify-between w-full p-8'>
+						<nav className='flex items-center justify-between w-full p-6'>
 							<Image src={'/profile_pic.png'} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 							<div className="text-left ml-2 ">
 								<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Minja Popovic</h2>
@@ -42,9 +42,9 @@ const Layout = ({ children, home }) => {
 				) :
 					(
 						<>
-							<nav className='flex items-center justify-between w-full p-8'>
+							<nav className='flex items-center justify-between w-full p-6'>
 								<Link href="/">
-									<a className="text-4xl font-bold hover:text-textLinks">
+									<a className="text-4xl font-bold hover:text-social">
 									{/* <Image src={'/profile_pic.png'} width="40" height="40" alt='Profile of the Author' className="rounded-full" /> */}
 									Blog
 									</a>
@@ -66,7 +66,7 @@ const Layout = ({ children, home }) => {
 					)}
 			</header>
 
-			<main className="container mx-auto my-auto px-8 max-w-3xl">
+			<main className="container mx-auto my-auto px-6 max-w-3xl">
 			{children}
 			{!home && (
 				<div className="mt-10 mb-20">

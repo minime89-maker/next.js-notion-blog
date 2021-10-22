@@ -65,7 +65,7 @@ const blockPage = (block) => {
 			)
 		case 'video':
 			return (
-				<iframe src={value.external.url} frameBorder="0" />
+				<iframe src={value.external.url} frameBorder="0" title={value.external.caption} width='100%' height='50%' layout='responsive'/>
 			)
 		default:
 			return `❌ Unsupported block (${type === "unsupported" ? "unsupported" : type})`;

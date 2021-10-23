@@ -12,7 +12,7 @@ module.exports = {
         },
     extend: {
       colors: {
-        backgroundColor: '#faf7f3',
+        backgroundColor: '#F9FAFB',
         backgroundDark: '#202023',
         button: '#319795',
         buttonDark: '#81E6D9',

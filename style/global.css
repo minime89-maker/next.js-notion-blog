@@ -1,0 +1,7 @@
+.post-link{
+	@apply transition-shadow;
+	box-shadow: inset 0 -0.05em 0 #2C7A7B;
+}
+.post-link:hover{
+	box-shadow: inset 0 -0.5em 0 #2C7A7B;
+}

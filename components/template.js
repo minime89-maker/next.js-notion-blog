@@ -13,12 +13,12 @@ export const Text = ({ text }) => {
 			<span
 				key={id}
 				className={[
-					'text-md leading-relax dark:text-textSecondaryDark',
+					'text-md leading-relax text-textSecondary dark:text-textSecondaryDark',
 					bold ? 'font-bold' : '',
 					italic ? 'italic' : '',
 					underline ? 'underline' : '',
 					strikethrough ? 'line-through' : '',
-					code ? 'bg-gray-200 py-1 px-2 rounded-sm text-sm font-mono' : '',
+					code ? 'bg-gray-200 py-1 px-2 rounded-sm text-sm font-mono dark:text-textSecondary ' : '',
 				].join(' ')}
 				style={color !== 'default' ? { color } : {}}
 			>

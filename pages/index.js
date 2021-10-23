@@ -32,7 +32,7 @@ const Home = ({ database }) => {
                  href={`/${page.properties.Slug.rich_text[0].plain_text}`}
                >
                  <a className="p-4 mt-4 text-left max-w-3xl  hover:text-blue-600 focus:text-blue-600">
-                   <h1 className="text-xl font-semibold text-textPrimary dark:text-textPrimaryDark hover:text-social hover:underline">{page.properties.Name.title[0].plain_text}</h1>
+                   <h1 className="text-xl font-semibold text-textPrimary dark:text-textPrimaryDark post-link" >{page.properties.Name.title[0].plain_text}</h1>
                    <p className="mt-1.5 my-4 text-md text-textSecondary dark:text-textSecondaryDark">
                      {page.properties.Description.rich_text[0].plain_text}
                    </p>

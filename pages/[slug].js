@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import { Text, Heading_2, Code, Heading_1, Heading_3 } from '../components/template'
@@ -11,9 +10,9 @@ const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
 	
-	console.log({
-		block:block,
-	})
+	// console.log({
+	// 	block:block,
+	// })
 
 	switch (type) {
 		case "paragraph":
@@ -22,7 +21,6 @@ const blockPage = (block) => {
 					<Text key={id} text={value.text} />
 				</p>
 			);
-	
 		case "heading_1":
 			return (
 					<Heading_1 key={id}>{value.text[0].plain_text}</Heading_1>
@@ -48,7 +46,9 @@ const blockPage = (block) => {
 			const src = value.type === 'external' ? value.external.url : value.file.url
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
-				<Image key={id} src={src} alt={caption} width='100%' height='50%' layout='responsive' className='my-2 rounded-md shadow-sm max-w-2xl' />
+				<div className='w-full my-4'>
+					<Image key={id} src={src} alt={caption} width={500} height={300} layout='responsive' sizes='50vw' />
+				</div>
 			)
 		case 'bulleted_list_item':
 		case 'numbered_list_item':
@@ -65,19 +65,21 @@ const blockPage = (block) => {
 			)
 		case 'video':
 			return (
-				<iframe src={value.external.url} title={value.external.caption} width='100%' height='100%' layout='responsive'/>
+				<div className='frame-container'>
+					<iframe src={value.external.url} title={value.external.caption} frameBorder='0'/>
+				</div>
 			)
 		default:
-			return `❌ Unsupported block (${type === "unsupported" ? "unsupported" : type})`;
+			return `Unsupported block (${type === "unsupported" ? "unsupported" : type})`;
 	}
 }
 
 const Pages = ({ pages, blocks }) => {
 
-	console.log({
-		pages,
-		blocks
-	})
+	// console.log({
+	// 	pages,
+	// 	blocks
+	// })
 
 	return (
 		<Layout>
@@ -88,15 +90,15 @@ const Pages = ({ pages, blocks }) => {
 			<section className="max-w-3xl mx-auto mb-12">
 			{pages && (
 				<div key={pages.id} className='pb-2'>
-					<h1 className="text-4xl leading-relaxed font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
-					<div className='flex items-center py-2 '>
+					<h1 className="text-4xl pb-4 font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
+					<div className='flex items-center pb-4 space-y-4'>
 						<img className='rounded-full h-6 w-6 mr-2' src={'/profile_pic.png'} width={12} height={12} />
 						<small>{pages.properties.Author.created_by.name}&nbsp;|&nbsp;</small>
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
 							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}
 						</small>
 					</div>
-					<p className='text-md text-textSecondary dark:text-textSecondaryDark '>{pages.properties.Description.rich_text[0]?.plain_text}</p>
+					<p className='text-md italic text-textSecondary dark:text-textSecondaryDark '>{pages.properties.Description.rich_text[0]?.plain_text}</p>
 				</div>
 			)}
 			</section>
@@ -116,7 +118,6 @@ const Pages = ({ pages, blocks }) => {
 
 export default Pages
 
-//export getStaticPaths()
 export async function getStaticPaths() {
 	const db = await getDatabase(databaseId)
 	return {
@@ -130,7 +131,6 @@ export async function getStaticPaths() {
 	}
 }
 
-//export getStaticProps()
 export async function getStaticProps({ params }) {
 	const { slug } = params
 	const db = await getDatabase(databaseId)

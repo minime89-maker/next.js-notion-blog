@@ -28,18 +28,20 @@ export const Text = ({ text }) => {
 	})
 )}
 
+// Header component for annotations
 export const Heading_1 = ({ children }) => {
-	return <h1 className="text-4xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h1>
+	return <h1 className="text-4xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h1>
 }
 
 export const Heading_2 = ({ children }) => {
-	return <h2 className="text-3xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h2>
+	return <h2 className="text-3xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h2>
 }
 
 export const Heading_3 = ({ children }) => {
-	return <h3 className="text-2xl my-4 font-semibold text-textPrimary leading-relax dark:text-textPrimaryDark"><br />{children}</h3>
+	return <h3 className="text-2xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h3>
 }
 
+// Code components for annotations
 export const Code = ({ children }) => {
 	
 	useEffect(() => {

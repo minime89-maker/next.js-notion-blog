@@ -23,16 +23,16 @@ const Layout = ({ children, home }) => {
 			<header className="flex justify-between items-center">
 				{home ? (
 					<>
-						<nav className='flex items-start justify-around w-full relative mx-auto py-8 px-8  bg-backgroundColor dark:bg-backgroundDark '>
+						<nav className='flex items-start justify-between w-full relative mx-auto py-8 px-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
 								<div className='mb-6'>
 									<Image src={'/profile_pic.png'} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 								</div>
 						
 								<div className="text-left">
-									<h1 className='text-3xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Minja Popovic</h1>
-									<h2 className='text-md mb-4'>Frontend Developer</h2>
-									<p className='text-md max-w-xs leading-relaxed text-textPrimary dark:text-textSecondaryDark'>Writing about JavaScript, React, Next.js and Tailwind</p>
+									<h1 className='text-3xl font-semibold text-gray-900 dark:text-textPrimaryDark'>Minja Popovic</h1>
+									<h2 className='text-md mb-2'>Frontend Developer</h2>
+									<p className='text-md max-w-xs italic text-textSecondary dark:text-textSecondaryDark'>Writing about JavaScript, React, Next.js and Tailwind</p>
 								</div>
 							</div>
 							
@@ -52,14 +52,9 @@ const Layout = ({ children, home }) => {
 							<nav className='flex items-center justify-between w-full py-6 px-8'>
 								<Link href="/">
 									<a className="text-4xl font-bold post-link">
-									{/* <Image src={'/profile_pic.png'} width="40" height="40" alt='Profile of the Author' className="rounded-full" /> */}
 									Blog
 									</a>
 								</Link>
-								
-								{/* <div className="text-left pl-4 ">
-									<h2 className='text-xl font-semibold text-gray-900 leading-relaxed dark:text-textPrimaryDark'>Minja Popovic</h2>
-								</div> */}
 								<button
 									aria-label="Toggle Dark Mode"
 									type="button"

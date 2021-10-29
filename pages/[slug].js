@@ -76,23 +76,18 @@ const blockPage = (block) => {
 
 const Pages = ({ pages, blocks }) => {
 
-	// console.log({
-	// 	pages,
-	// 	blocks
-	// })
-
 	return (
 		<Layout>
 			<Head>
-				<title>{pages && pages.properties.Slug.rich_text[0]?.plain_text}</title>
+				<title>{pages && pages.properties.Name.title[0]?.plain_text}</title>
 			</Head>
 
 			<section className="max-w-3xl mx-auto mb-12">
 			{pages && (
 				<div key={pages.id} className='pb-2'>
 					<h1 className="text-4xl pb-4 font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
-					<div className='flex items-center pb-4 space-y-4'>
-						<img className='rounded-full h-6 w-6 mr-2' src={'/profile_pic.png'} width={12} height={12} />
+					<div className='flex items-center py-2'>
+						<img className='rounded-full h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
 						<small>{pages.properties.Author.created_by.name}&nbsp;|&nbsp;</small>
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
 							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}

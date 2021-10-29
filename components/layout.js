@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
+import {  getPages,  } from '../lib/client'
 
-const Layout = ({ children, home }) => {
+const Layout = ({ children, home, src }) => {
 
 	const {theme, setTheme} = useTheme()
 
@@ -18,6 +19,7 @@ const Layout = ({ children, home }) => {
 					property='og:title'
 					content="Notion's Blog"
 				/>
+				
 			</Head>
 
 			<header className="flex justify-between items-center">
@@ -26,7 +28,7 @@ const Layout = ({ children, home }) => {
 						<nav className='flex items-start justify-between w-full relative mx-auto py-8 px-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
 								<div className='mb-6'>
-									<Image src={'/profile_pic.png'} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
+									<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 								</div>
 						
 								<div className="text-left">

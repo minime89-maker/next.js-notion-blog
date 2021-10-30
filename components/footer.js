@@ -3,7 +3,7 @@ import * as Icon from 'react-feather'
 const Footer = ({ facebook, twitter, linkedin, github }) => {
 	return (
 		<footer className='pt-20 pb-6'>
-			<div className='flex items-center justify-center py-4 space-x-3'>
+			<div className='flex items-center justify-center py-2 space-x-3'>
 				<a href={facebook} target='_blank' rel='noopener' aria-label='Facebook'>
 					<Icon.Facebook className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>

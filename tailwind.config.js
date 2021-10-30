@@ -18,7 +18,7 @@ module.exports = {
         buttonDark: '#81E6D9',
         social: '#2C7A7B',
         socialDark: '#81E6D9',
-        callout: '#ebebeb',
+        callout: '#F4F4F5',
         calloutDark: '#3a3a40'
       },
       textColor: {

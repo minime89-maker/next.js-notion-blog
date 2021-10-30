@@ -20,7 +20,7 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 			<header className="flex justify-between items-center">
 				{home ? (
 					<>
-						<nav className='flex items-start justify-between max-w-3xl w-full relative mx-auto p-8  bg-backgroundColor dark:bg-backgroundDark '>
+						<nav className='flex items-start justify-between max-w-3xl w-full relative mx-auto p-5 mt-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
 								<div className='mb-6'>
 									<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full" />

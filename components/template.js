@@ -28,25 +28,30 @@ export const Text = ({ text }) => {
 	})
 )}
 
-// Header component for annotations
+// Header components
 export const Heading_1 = ({ children }) => {
-	return <h1 className="text-4xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h1>
+	return <h1 className="text-4xl mb-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h1>
 }
 
 export const Heading_2 = ({ children }) => {
-	return <h2 className="text-3xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h2>
+	return <h2 className="text-3xl mb-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h2>
 }
 
 export const Heading_3 = ({ children }) => {
-	return <h3 className="text-2xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h3>
+	return <h3 className="text-2xl mb-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h3>
 }
 
-// Callout component for annotations
+// Callout component
 export const Callout = ({ children }) => {
 	return <div className='bg-callout dark:bg-calloutDark w-full p-4 rounded'>{children}</div>
 }
 
-// Code components for annotations
+// Divider component
+export const Divider = () => {
+	return <hr className='mt-4 text-gray-300 dark:text-gray-500'/>
+}
+
+// Code component
 export const Code = ({ children }) => {
 	
 	useEffect(() => {

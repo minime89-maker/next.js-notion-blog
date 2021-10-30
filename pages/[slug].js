@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import { Text, Heading_2, Code, Heading_1, Heading_3, Callout } from '../components/template'
+import { Text, Heading_2, Code, Heading_1, Heading_3, Callout, Divider } from '../components/template'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 import { format } from 'date-fns'
@@ -38,7 +38,6 @@ const blockPage = (block) => {
 			return (
 				<Code key={id} >{value.text[0].plain_text}</Code>
 			)
-		
 		case 'image':
 			const src = value.type === 'external' ? value.external.url : value.file.url
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
@@ -65,6 +64,10 @@ const blockPage = (block) => {
 				<div className='frame-container rounded overflow-hidden'>
 					<iframe src={value.external.url} title={value.external.caption} frameBorder='0'/>
 				</div>
+			)
+		case 'divider':
+			return (
+				<Divider key={id} />
 			)
 		default:
 			return `Unsupported block (${type === "unsupported" ? "unsupported" : type})`;

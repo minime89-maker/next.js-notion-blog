@@ -1,18 +1,15 @@
 import Image from 'next/image'
 import Head from 'next/head'
-import { Text, Heading_2, Code, Heading_1, Heading_3 } from '../components/template'
+import { Text, Heading_2, Code, Heading_1, Heading_3, Callout } from '../components/template'
 import { getDatabase, getPages, getBlocks } from '../lib/client'
 import { databaseId } from './index'
 import { format } from 'date-fns'
 import Layout from '../components/layout'
 
 const blockPage = (block) => {
+	
 	const { type, id } = block
 	const value = block[type]
-	
-	// console.log({
-	// 	block:block,
-	// })
 
 	switch (type) {
 		case "paragraph":
@@ -35,7 +32,7 @@ const blockPage = (block) => {
 			)
 		case 'callout':
 			return (
-				<Text key={id}>{value.icon.emoji}{' '}{value.text[0]?.plain_text}</Text>
+				<Callout id={id}>{value.icon.emoji}{' '}{value.text[0]?.plain_text}</Callout>
 			)
 		case 'code':
 			return (
@@ -46,7 +43,7 @@ const blockPage = (block) => {
 			const src = value.type === 'external' ? value.external.url : value.file.url
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
-				<div className='w-full my-4'>
+				<div className='w-full my-4 rounded overflow-hidden shadow'>
 					<Image key={id} src={src} alt={caption} width={500} height={300} layout='responsive' sizes='50vw' />
 				</div>
 			)
@@ -65,7 +62,7 @@ const blockPage = (block) => {
 			)
 		case 'video':
 			return (
-				<div className='frame-container'>
+				<div className='frame-container rounded overflow-hidden'>
 					<iframe src={value.external.url} title={value.external.caption} frameBorder='0'/>
 				</div>
 			)

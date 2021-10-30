@@ -12,27 +12,25 @@ const Home = ({ database, author }) => {
   const { theme } = useTheme()
 
   /* logging response */
-  // console.log({
-  //   pages: database,
-  //   theme: theme,
-  //   author: author
-  // })
-
-
+  console.log({
+    pages: database,
+    theme: theme,
+    author: author
+  })
 
   return (
     <Layout home 
-    src={database[0].properties.Author.created_by.avatar_url} 
-    authorName={author.properties.Name.title[0].plain_text}
-    authorSlug={author.properties.Slug.rich_text[0].plain_text}
-    authorDescription={author.properties.Description.rich_text[0].plain_text}
-    facebook={author.properties.Social.multi_select[0].name}
-    twitter={author.properties.Social.multi_select[1].name}
-		linkedin={author.properties.Social.multi_select[2].name}
-		github={author.properties.Social.multi_select[3].name}
+      src={database[0].properties.Author.created_by.avatar_url} 
+      authorName={author.properties.Name.title[0].plain_text}
+      authorSlug={author.properties.Slug.rich_text[0].plain_text}
+      authorDescription={author.properties.Description.rich_text[0].plain_text}
+      facebook={author.properties.Social.multi_select[0].name}
+      twitter={author.properties.Social.multi_select[1].name}
+      linkedin={author.properties.Social.multi_select[2].name}
+      github={author.properties.Social.multi_select[3].name}
      >
       <Head>
-        <title>{database[0].properties.Author.created_by.name}'s Blog</title>
+        <title>{database[0].properties.Author.created_by.name} Blog</title>
       </Head>
 
       <section>

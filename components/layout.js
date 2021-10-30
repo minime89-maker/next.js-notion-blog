@@ -11,15 +11,10 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 	return (
 		<div className="container mx-auto my-auto min-w-full min-h-screen bg-backgroundColor dark:bg-backgroundDark">
 			<Head>
-				<meta
-					name='description'
-					content="Create Blog never was easier"
-				/>
-				<meta
-					property='og:title'
-					content="Notion's Blog"
-				/>
-
+				<meta name='description' content={`${authorDescription}`} />
+				<meta property='og:title' content={`${authorName} Blog`} />
+				<meta name='author' content={authorName} />
+				<meta name='image' property='og:image' content={src} />
 			</Head>
 
 			<header className="flex justify-between items-center">

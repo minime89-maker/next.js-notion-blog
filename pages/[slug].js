@@ -74,15 +74,20 @@ const blockPage = (block) => {
 	}
 }
 
-const Pages = ({ pages, blocks }) => {
-
+const Pages = ({ pages, blocks, author }) => {
+	
 	return (
-		<Layout>
+		<Layout
+		facebook={author && author[0].properties.Social.multi_select[0].name}
+		twitter={author && author[0].properties.Social.multi_select[1].name}
+		linkedin={author && author[0].properties.Social.multi_select[2].name}
+		github={author && author[0].properties.Social.multi_select[3].name}
+		>
 			<Head>
 				<title>{pages && pages.properties.Name.title[0]?.plain_text}</title>
 			</Head>
 
-			<section className="max-w-3xl mx-auto mb-12">
+			<section className="max-w-3xl mx-auto mb-8">
 			{pages && (
 				<div key={pages.id} className='pb-2'>
 					<h1 className="text-4xl pb-4 font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
@@ -128,14 +133,16 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
 	const { slug } = params
-	const db = await getDatabase(databaseId)
-	const filter = db.filter((page) => page.properties.Slug.rich_text[0]?.plain_text === slug)
+	const database = await getDatabase(databaseId)
+	const filter = database.filter((page) => page.properties.Slug.rich_text[0]?.plain_text === slug)
+	const author = database.slice(0,1)
 	const pages = await getPages(filter[0].id)
 	const blocks = await getBlocks(filter[0].id)
 	return {
 		props: {
 			pages,
-			blocks
+			blocks,
+			author
 		},
 		revalidate: 1
 	}

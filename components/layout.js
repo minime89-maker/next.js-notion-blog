@@ -2,11 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import {  getPages,  } from '../lib/client'
+import Footer from './footer'
 
-const Layout = ({ children, home, src }) => {
+const Layout = ({ children, home, src, authorName, authorSlug, authorDescription, facebook, twitter, linkedin, github }) => {
 
-	const {theme, setTheme} = useTheme()
+	const { theme, setTheme } = useTheme()
 
 	return (
 		<div className="container mx-auto my-auto min-w-full min-h-screen bg-backgroundColor dark:bg-backgroundDark">
@@ -19,25 +19,25 @@ const Layout = ({ children, home, src }) => {
 					property='og:title'
 					content="Notion's Blog"
 				/>
-				
+
 			</Head>
 
 			<header className="flex justify-between items-center">
 				{home ? (
 					<>
-						<nav className='flex items-start justify-between w-full relative mx-auto py-8 px-8  bg-backgroundColor dark:bg-backgroundDark '>
+						<nav className='flex items-start justify-between max-w-3xl w-full relative mx-auto p-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
 								<div className='mb-6'>
 									<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 								</div>
-						
+
 								<div className="text-left">
-									<h1 className='text-3xl font-semibold text-gray-900 dark:text-textPrimaryDark'>Minja Popovic</h1>
-									<h2 className='text-md mb-2'>Frontend Developer</h2>
-									<p className='text-md max-w-xs italic text-textSecondary dark:text-textSecondaryDark'>Writing about JavaScript, React, Next.js and Tailwind</p>
+									<h1 className='text-3xl font-semibold text-gray-900 dark:text-textPrimaryDark'>{authorName}</h1>
+									<h2 className='text-md mb-2'>{authorSlug}</h2>
+									<p className='text-md max-w-xs italic text-textSecondary dark:text-textSecondaryDark'>{authorDescription}</p>
 								</div>
 							</div>
-							
+
 							<button
 								aria-label="Toggle Dark Mode"
 								type="button"
@@ -51,10 +51,10 @@ const Layout = ({ children, home, src }) => {
 				) :
 					(
 						<>
-							<nav className='flex items-center justify-between w-full py-6 px-8'>
+							<nav className='flex items-center justify-between max-w-3xl mx-auto w-full mt-8 p-5 my-16'>
 								<Link href="/">
 									<a className="text-4xl font-bold post-link">
-									Blog
+										Blog
 									</a>
 								</Link>
 								<button
@@ -70,23 +70,19 @@ const Layout = ({ children, home, src }) => {
 					)}
 			</header>
 
-			<main className="container mx-auto my-auto px-8 max-w-3xl">
-			{children}
-			{!home && (
-				<div className="mt-10 mb-20">
-					<Link href='/'>
-						<a className='post-link text-3xl'>&larr;</a>
-					</Link>
-				</div>
-					
-			)}
+			<main className="container mx-auto my-auto mt-6 px-6 max-w-3xl">
+				{children}
+				{!home && (
+					<div className="mt-10">
+						<Link href='/'>
+							<a className='post-link text-3xl pr-2'>&larr;</a>
+						</Link>
+					</div>
+
+				)}
 			</main>
 
-			
-
-			<footer className='py-6'>
-				<p className="text-center text-xs text-textTertiary dark:text-textTertiaryDark">Copyright Minja 2021. All rights reserved.</p>
-			</footer>
+			<Footer facebook={facebook} twitter={twitter} linkedin={linkedin} github={github} />
 
 		</div>
 	)

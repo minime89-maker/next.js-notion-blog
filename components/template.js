@@ -41,6 +41,11 @@ export const Heading_3 = ({ children }) => {
 	return <h3 className="text-2xl my-4 font-semibold text-textPrimary dark:text-textPrimaryDark"><br />{children}</h3>
 }
 
+// Callout component for annotations
+export const Callout = ({ children }) => {
+	return <div className='bg-callout dark:bg-calloutDark w-full p-4 rounded'>{children}</div>
+}
+
 // Code components for annotations
 export const Code = ({ children }) => {
 	
@@ -49,7 +54,7 @@ export const Code = ({ children }) => {
 	}, [])
 
 	return (
-			<pre>
+			<pre className='rounded'>
 				<code className='language-javascript'>{children}</code>
 			</pre>
 	)

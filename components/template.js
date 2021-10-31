@@ -43,7 +43,7 @@ export const Heading_3 = ({ children }) => {
 
 // Callout component
 export const Callout = ({ children }) => {
-	return <div className='bg-callout dark:bg-calloutDark w-full p-4 rounded'>{children}</div>
+	return <div className='bg-gray-200 dark:bg-calloutDark w-full p-4 rounded'>{children}</div>
 }
 
 // Divider component
@@ -52,7 +52,7 @@ export const Divider = () => {
 }
 
 // Code component
-export const Code = ({ children }) => {
+export const Code = ({ children, language }) => {
 	
 	useEffect(() => {
 		Prism.highlightAll();
@@ -60,7 +60,8 @@ export const Code = ({ children }) => {
 
 	return (
 			<pre className='rounded'>
-				<code className='language-javascript'>{children}</code>
+				<code className={`language-${language}`}>
+				{children}</code>
 			</pre>
 	)
 }

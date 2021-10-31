@@ -22,7 +22,7 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 					<>
 						<nav className='flex items-start justify-between max-w-3xl w-full relative mx-auto p-5 mt-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
-								<div className='mb-6'>
+								<div className='mb-2'>
 									<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
 								</div>
 
@@ -46,7 +46,7 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 				) :
 					(
 						<>
-							<nav className='flex items-center justify-between max-w-3xl mx-auto w-full mt-8 p-5 my-16'>
+							<nav className='flex items-center justify-between max-w-3xl mx-auto w-full mt-8 p-5 my-12'>
 								<Link href="/">
 									<a className="text-4xl font-bold post-link">
 										Blog

@@ -30,7 +30,7 @@ module.exports = {
         textTertiaryDark: '#ADADAD',
         textButton: '#fff',
         textLinks: '#81E6D9'
-      }
+      },
     },
   },
   variants: {

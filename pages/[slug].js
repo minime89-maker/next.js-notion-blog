@@ -11,6 +11,8 @@ const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
 
+	console.log(value)
+
 	switch (type) {
 		case "paragraph":
 			return (
@@ -36,14 +38,17 @@ const blockPage = (block) => {
 			)
 		case 'code':
 			return (
-				<Code key={id} >{value.text[0].plain_text}</Code>
+				<Code key={id} language={value.language} >{value.text[0].plain_text}</Code>
 			)
 		case 'image':
 			const src = value.type === 'external' ? value.external.url : value.file.url
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
 				<div className='w-full my-4 rounded overflow-hidden shadow'>
-					<Image key={id} src={src} alt={caption} width={500} height={300} layout='responsive' sizes='50vw' />
+					<Image key={id} src={src} alt={caption} width={600} 
+					height={400} 
+					loading="eager"
+					layout="responsive" />
 				</div>
 			)
 		case 'bulleted_list_item':
@@ -62,9 +67,15 @@ const blockPage = (block) => {
 		case 'video':
 			return (
 				<div className='frame-container rounded overflow-hidden'>
-					<iframe src={value.external.url} title={value.external.caption} frameBorder='0'/>
+					<iframe src={value.external.url} title={value.external.caption} frameBorder='0' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen/>
 				</div>
 			)
+		case 'embed': 
+				return (
+					<div className='frame-container rounded overflow-hidden'>
+						<iframe src={value.url} title={value.caption[0].plain_text} frameBorder='0'/>
+					</div>
+				)
 		case 'divider':
 			return (
 				<Divider key={id} />
@@ -142,7 +153,7 @@ export async function getStaticProps({ params }) {
 		props: {
 			pages,
 			blocks,
-			author
+			author,
 		},
 		revalidate: 1
 	}

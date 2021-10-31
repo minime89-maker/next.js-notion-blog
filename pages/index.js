@@ -36,7 +36,8 @@ const Home = ({ database, author }) => {
       <section>
       <div className="flex flex-col items-start justify-center max-w-3xl mt-6 mx-auto sm:w-full">
            {database && database.map((page) => {
-             return (
+            if(page.properties.published.checkbox) {
+            return (
                <Link
                  key={page.id}
                  href={`/${page.properties.Slug.rich_text[0].plain_text}`}
@@ -54,7 +55,10 @@ const Home = ({ database, author }) => {
                    </div>
                  </a>
                </Link>
-             )
+             )}
+             else {
+                return null
+             }
            })}
          </div>
       </section>

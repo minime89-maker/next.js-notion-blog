@@ -31,17 +31,6 @@ module.exports = {
         textButton: '#fff',
         textLinks: '#81E6D9'
       },
-      keyframes: {
-        wiggle: {
-          '0%': {transform: 'translate(1px, 1px) rotate(0deg)'},
-          '30%': {transform: 'translate(-1px, -2px) rotate(1deg)'},
-          '60%': {transform: 'translate(0px, 1px) rotate(-1deg)'},
-          '100%': {transform: 'translate(1px, 1px) rotate(0deg)'}
-        }
-      },
-      animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite'
-      }
     },
   },
   variants: {

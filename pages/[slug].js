@@ -43,7 +43,7 @@ const blockPage = (block) => {
 			const caption = value.caption ? value.caption[0]?.plain_text : ''
 			return (
 				<div className='w-full my-4 rounded overflow-hidden shadow'>
-					<Image key={id} src={src} alt={caption} width={600} 
+					<Image key={id} src={src} alt={caption} width={650} 
 					height={400} 
 					loading="eager"
 					layout="responsive" />

@@ -12,11 +12,11 @@ const Home = ({ database, author }) => {
   const { theme } = useTheme()
 
   /* logging response */
-  console.log({
-    pages: database,
-    theme: theme,
-    author: author
-  })
+  // console.log({
+  //   pages: database,
+  //   theme: theme,
+  //   author: author
+  // })
 
   return (
     <Layout home 
@@ -75,6 +75,6 @@ export const getStaticProps = async () => {
       author: database[0],
       database: database.slice(1)
     },
-    revalidate: 1
+    revalidate: 10
   }
 }

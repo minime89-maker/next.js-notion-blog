@@ -77,7 +77,7 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 				)}
 			</main>
 
-			<Footer facebook={facebook} twitter={twitter} linkedin={linkedin} github={github} />
+			<Footer facebook={facebook} twitter={twitter} linkedin={linkedin} github={github} authorName={authorName} />
 
 		</div>
 	)

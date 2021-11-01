@@ -1,6 +1,6 @@
 import * as Icon from 'react-feather'
 
-const Footer = ({ facebook, twitter, linkedin, github }) => {
+const Footer = ({ facebook, twitter, linkedin, github, authorName }) => {
 	return (
 		<footer className='pt-20 pb-6'>
 			<div className='flex items-center justify-center py-2 space-x-3'>
@@ -17,7 +17,7 @@ const Footer = ({ facebook, twitter, linkedin, github }) => {
 					<Icon.GitHub className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>
 			</div>
-			<p className="text-center text-xs text-textTertiary dark:text-textTertiaryDark">Copyright © 2021. Minja.</p>
+			<p className="text-center text-xs text-textTertiary dark:text-textTertiaryDark">Copyright © 2021. {authorName}.</p>
 		</footer>
 	)
 

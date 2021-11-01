@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import Footer from './footer'
-import Contact from './contact'
 
 const Layout = ({ children, home, src, authorName, authorSlug, authorDescription, facebook, twitter, linkedin, github }) => {
 

@@ -1,7 +1,6 @@
 import * as Icon from 'react-feather'
 
 const Footer = ({ facebook, twitter, linkedin, github, authorName }) => {
-	console.log(authorName)
 	return (
 		<footer className='pt-20 pb-6'>
 			<div className='flex items-center justify-center py-2 space-x-3'>

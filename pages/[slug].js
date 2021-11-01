@@ -87,8 +87,6 @@ const blockPage = (block) => {
 }
 
 const Pages = ({ pages, blocks, author }) => {
-
-	console.log(author)
 	
 	return (
 		<Layout

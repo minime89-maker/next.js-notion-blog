@@ -11,6 +11,9 @@ const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
 
+	console.log(value)
+
+
 	switch (type) {
 		case "paragraph":
 			return (
@@ -71,7 +74,7 @@ const blockPage = (block) => {
 		case 'embed': 
 				return (
 					<div className='frame-container rounded overflow-hidden'>
-						<iframe src={value.url} title={value.caption[0].plain_text} frameBorder='0'/>
+						<iframe src={value.url} title={value.caption[0]?.plain_text} frameBorder='0'/>
 					</div>
 				)
 		case 'divider':
@@ -84,6 +87,8 @@ const blockPage = (block) => {
 }
 
 const Pages = ({ pages, blocks, author }) => {
+
+	console.log(author)
 	
 	return (
 		<Layout
@@ -91,6 +96,7 @@ const Pages = ({ pages, blocks, author }) => {
 		twitter={author && author[0].properties.Social.multi_select[1].name}
 		linkedin={author && author[0].properties.Social.multi_select[2].name}
 		github={author && author[0].properties.Social.multi_select[3].name}
+		authorName={author && author[0].properties.Name.title[0].plain_text}
 		>
 			<Head>
 				<title>{pages && pages.properties.Name.title[0]?.plain_text}</title>
@@ -121,6 +127,7 @@ const Pages = ({ pages, blocks, author }) => {
 					)
 				})}
 			</article>
+
 		</Layout>
 	)
 }
@@ -151,8 +158,8 @@ export async function getStaticProps({ params }) {
 		props: {
 			pages,
 			blocks,
-			author,
+			author
 		},
-		revalidate: 1
+		revalidate: 10
 	}
 }

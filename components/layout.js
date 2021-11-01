@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import Footer from './footer'
+import Contact from './contact'
 
 const Layout = ({ children, home, src, authorName, authorSlug, authorDescription, facebook, twitter, linkedin, github }) => {
 
@@ -15,6 +16,12 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 				<meta property='og:title' content={`${authorName} Blog`} />
 				<meta name='author' content={authorName} />
 				<meta name='image' property='og:image' content={src} />
+				<meta name='twitter:card' content='summary_large_image' />
+				<meta name='twitter:site' content={`@${twitter}`} />
+				<meta name='twitter:creator' content={`@${twitter}`} />
+				<meta name='twitter:title' content={`${authorName} Blog`} />
+				<meta name='twitter:description' content={`${authorDescription}`} />
+				<meta name='twitter:image' content={src} />
 			</Head>
 
 			<header className="flex justify-between items-center">
@@ -22,8 +29,12 @@ const Layout = ({ children, home, src, authorName, authorSlug, authorDescription
 					<>
 						<nav className='flex items-start justify-between max-w-3xl w-full relative mx-auto p-5 mt-8  bg-backgroundColor dark:bg-backgroundDark '>
 							<div className='text-left'>
-								<div className='mb-2'>
-									<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full" />
+								<div className='mb-2  animate-wiggle'>
+									<Link href={`/about`}>
+										<a>	
+											<Image src={src} width="80" height="80" alt='Profile of the Author' className="rounded-full " />
+										</a>
+									</Link>
 								</div>
 
 								<div className="text-left">

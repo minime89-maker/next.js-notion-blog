@@ -11,9 +11,6 @@ const blockPage = (block) => {
 	const { type, id } = block
 	const value = block[type]
 
-	console.log(value)
-
-
 	switch (type) {
 		case "paragraph":
 			return (

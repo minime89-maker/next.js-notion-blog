@@ -4,16 +4,16 @@ const Footer = ({ facebook, twitter, linkedin, github, authorName }) => {
 	return (
 		<footer className='pt-20 pb-6'>
 			<div className='flex items-center justify-center py-2 space-x-3'>
-				<a href={facebook} target='_blank' rel='noopener' aria-label='Facebook'>
+				<a href={facebook} target='_blank' aria-label='Facebook' rel='noreferrer'>
 					<Icon.Facebook className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>
-				<a href={twitter} target='_blank' rel='noopener' aria-label='Twitter'>
+				<a href={twitter} target='_blank' aria-label='Twitter' rel='noreferrer'>
 					<Icon.Twitter className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>
-				<a href={linkedin} target='_blank' rel='noopener' aria-label='Linkedin'>
+				<a href={linkedin} target='_blank' aria-label='Linkedin' rel='noreferrer'>
 					<Icon.Linkedin className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>
-				<a href={github} target='_blank' rel='noopener' aria-label='Github'>
+				<a href={github} target='_blank' aria-label='Github' rel='noreferrer'>
 					<Icon.GitHub className='text-social dark:text-socialDark hover:opacity-75' size={26} />
 				</a>
 			</div>

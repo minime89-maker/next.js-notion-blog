@@ -102,7 +102,7 @@ const Pages = ({ pages, blocks, author }) => {
 				<div key={pages.id} className='pb-2'>
 					<h1 className="text-4xl pb-4 font-semibold text-textPrimary dark:text-textPrimaryDark">{pages.properties.Name.title[0]?.plain_text}</h1>
 					<div className='flex items-center py-2'>
-						<img className='rounded-full h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} />
+						<Image className='rounded-full h-6 w-6 mr-2' src={pages.properties.Author.created_by.avatar_url} width={12} height={12} alt='Author' layout='responsive' />
 						<small>{pages.properties.Author.created_by.name}&nbsp;|&nbsp;</small>
 						<small className='text-textTertiary dark:text-textTertiaryDark'>
 							{format(new Date(pages.properties.Date.date.start), 'MMM dd, yyyy')}

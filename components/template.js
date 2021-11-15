@@ -22,7 +22,7 @@ export const Text = ({ text }) => {
 				].join(' ')}
 				style={color !== 'default' ? { color } : {}}
 			>
-				{text.link ? <a href={text.link.url} target='_blank' className='underline text-social dark:text-socialDark hover:opacity-60'>{text.content}</a> : text.content}
+				{text.link ? <a href={text.link.url} target='_blank' rel='noreferrer' className='underline text-social dark:text-socialDark hover:opacity-60'>{text.content}</a> : text.content}
 			</span>
 		)
 	})

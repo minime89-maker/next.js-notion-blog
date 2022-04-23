@@ -2,32 +2,27 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import Footer from './Footer';
+import Footer, { FooterProps } from './Footer';
 
 export type LayoutProps = {
-  home: boolean;
-  children: React.ReactNode;
+  home?: boolean;
+  children?: React.ReactNode;
   src: string;
-  authorName?: string;
-  facebook?: string;
-  twitter?: string;
-  linkedin?: string;
-  github?: string;
   authorDescription?: string;
   authorSlug?: string;
-};
+} & FooterProps;
 
 const Layout = ({
   children,
   home,
   src,
-  authorName,
   authorSlug,
   authorDescription,
   facebook,
   twitter,
   linkedin,
   github,
+  authorName,
 }: LayoutProps) => {
   const { theme, setTheme } = useTheme();
 

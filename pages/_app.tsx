@@ -7,6 +7,7 @@ import { AppProps } from 'next/app';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { useEffect } from 'react';
+import ScrollToTop from '../components/ScrollToTop';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -19,13 +20,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/sw.js').then(
           function (registration) {
-            console.log(
-              'Service Worker registration successful with scope: ',
-              registration.scope
-            );
+            registration;
           },
           function (err) {
-            console.log('Service Worker registration failed: ', err);
+            err.message;
           }
         );
       });
@@ -35,6 +33,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider attribute="class">
       <Component {...pageProps} />
+      <ScrollToTop />
     </ThemeProvider>
   );
 };

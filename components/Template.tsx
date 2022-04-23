@@ -53,7 +53,6 @@ export const Text = ({ text }) => {
 
 // Header components
 export const Heading_1 = ({ children }: HeaderProps) => {
-  console.log(children);
   return (
     <h1 className="text-4xl mb-4 font-semibold text-textPrimary dark:text-textPrimaryDark">
       <br />

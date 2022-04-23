@@ -16,7 +16,7 @@ import { format } from 'date-fns';
 import Layout from '../components/Layout';
 
 // @ts-ignore
-const blockPage = (block) => {
+const BlockPage = (block) => {
   const { type, id } = block;
   const value = block[type];
 
@@ -115,7 +115,6 @@ const Pages = ({ pages, blocks, author }) => {
       linkedin={author && author[0].properties.Social.multi_select[2].name}
       github={author && author[0].properties.Social.multi_select[3].name}
       authorName={author && author[0].properties.Name.title[0].plain_text}
-      home={false}
       src=""
     >
       <Head>
@@ -157,14 +156,12 @@ const Pages = ({ pages, blocks, author }) => {
       <article className="max-w-3xl mx-auto">
         {blocks &&
           blocks.map((block: any) => {
-            return <span key={block.id}>{blockPage(block)}</span>;
+            return <span key={block.id}>{BlockPage(block)}</span>;
           })}
       </article>
     </Layout>
   );
 };
-
-export default Pages;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const db = await getDatabase(databaseId);
@@ -199,3 +196,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 10,
   };
 };
+
+export { Pages as default, BlockPage };

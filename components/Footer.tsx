@@ -6,7 +6,7 @@ export type FooterProps = {
   twitter: string;
   linkedin: string;
   github: string;
-  authorName: string;
+  authorName?: string;
 };
 
 const Footer = ({
@@ -52,7 +52,7 @@ const Footer = ({
       </Link>
     </div>
     <p className="text-center text-xs text-textTertiary dark:text-textTertiaryDark">
-      Copyright © 2021. {authorName}.
+      Copyright © 2022. {authorName}.
     </p>
   </footer>
 );

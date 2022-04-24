@@ -1,7 +1,7 @@
 {
   "short_name": "Blog",
   "name": "Notion's Blog",
-  "description": "A simple blog created with Notion",
+  "description": "A simple Blog created with Notion",
   "icons": [
     {
       "src": "./icons/maskable_icon_x48.png",
@@ -39,8 +39,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
-  "id": "/",
+  "start_url": ".",
+  "id": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#222222"

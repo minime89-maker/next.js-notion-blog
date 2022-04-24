@@ -56,8 +56,8 @@ const Layout = ({
                 <div className="mb-2  animate-wiggle">
                   <Image
                     src={src}
-                    width="80"
-                    height="80"
+                    width="80px"
+                    height="80px"
                     alt="Profile of the Author"
                     className="rounded-full "
                   />

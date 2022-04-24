@@ -1,7 +1,5 @@
 const withPWA = require('next-pwa')
 
-const production = process.env.NODE_ENV === 'production'
-
 module.exports = withPWA({
   images: {
     domains: [
@@ -18,6 +16,6 @@ module.exports = withPWA({
     dest: 'public',
     register: true,
     skipWaiting: true,
-    disable: production ? false : true,
+    disable: process.env.NODE_ENV === 'development',
   },
 })

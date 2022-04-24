@@ -21,6 +21,7 @@ const Footer = ({
       {facebook && (
         <Link href={facebook}>
           <a
+            aria-label="Facebook"
             target="_blank"
             rel="noopener noreferrer"
           >

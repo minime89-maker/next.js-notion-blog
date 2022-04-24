@@ -18,7 +18,7 @@ const Footer = ({
 }: FooterProps) => (
   <footer className="pt-20 pb-6">
     <div className="flex items-center justify-center py-2 space-x-3">
-      <Link href={facebook}>
+      <Link href={facebook && facebook}>
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -29,7 +29,7 @@ const Footer = ({
           />
         </a>
       </Link>
-      <Link href={twitter}>
+      <Link href={twitter && twitter}>
         <a
           target="_blank"
           aria-label="Twitter"
@@ -41,7 +41,7 @@ const Footer = ({
           />
         </a>
       </Link>
-      <Link href={linkedin}>
+      <Link href={linkedin && linkedin}>
         <a
           target="_blank"
           aria-label="Linkedin"
@@ -53,7 +53,7 @@ const Footer = ({
           />
         </a>
       </Link>
-      <Link href={github}>
+      <Link href={github && github}>
         <a
           target="_blank"
           aria-label="Github"

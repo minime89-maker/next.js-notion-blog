@@ -2,7 +2,7 @@ const withPWA = require('next-pwa')
 
 const production = process.env.NODE_ENV === 'production'
 
-export default withPWA({
+module.exports = withPWA({
   images: {
     domains: [
       's3-us-west-2.amazonaws.com',

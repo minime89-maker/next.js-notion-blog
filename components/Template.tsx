@@ -1,14 +1,14 @@
-import Prism from 'prismjs';
-import React, { useEffect } from 'react';
+import Prism from 'prismjs'
+import React, { useEffect } from 'react'
 
 export type HeaderProps = {
-  children: JSX.Element | JSX.Element[];
-};
+  children: JSX.Element | JSX.Element[]
+}
 
 // @ts-ignore
 export const Text = ({ text }) => {
   {
-    !text && null;
+    !text && null
   }
   return (
     text &&
@@ -17,7 +17,7 @@ export const Text = ({ text }) => {
       const {
         annotations: { bold, italic, underline, strikethrough, code, color },
         text,
-      } = value;
+      } = value
       return (
         <span
           key={id}
@@ -46,10 +46,10 @@ export const Text = ({ text }) => {
             text.content
           )}
         </span>
-      );
+      )
     })
-  );
-};
+  )
+}
 
 // Header components
 export const Heading_1 = ({ children }: HeaderProps) => {
@@ -58,8 +58,8 @@ export const Heading_1 = ({ children }: HeaderProps) => {
       <br />
       {children}
     </h1>
-  );
-};
+  )
+}
 
 export const Heading_2 = ({ children }: HeaderProps) => {
   return (
@@ -67,8 +67,8 @@ export const Heading_2 = ({ children }: HeaderProps) => {
       <br />
       {children}
     </h2>
-  );
-};
+  )
+}
 
 export const Heading_3 = ({ children }: HeaderProps) => {
   return (
@@ -76,8 +76,8 @@ export const Heading_3 = ({ children }: HeaderProps) => {
       <br />
       {children}
     </h3>
-  );
-};
+  )
+}
 
 // Callout component
 export const Callout = ({ children }: HeaderProps) => {
@@ -85,29 +85,29 @@ export const Callout = ({ children }: HeaderProps) => {
     <div className="bg-gray-200 dark:bg-calloutDark w-full p-4 rounded">
       {children}
     </div>
-  );
-};
+  )
+}
 
 // Divider component
 export const Divider = () => {
-  return <hr className="mt-4 text-gray-300 dark:text-gray-500" />;
-};
+  return <hr className="mt-4 text-gray-300 dark:text-gray-500" />
+}
 
 // Code component
 export const Code = ({
   children,
   language,
 }: {
-  children: JSX.Element | JSX.Element[];
-  language: string;
+  children: JSX.Element | JSX.Element[]
+  language: string
 }) => {
   useEffect(() => {
-    Prism.highlightAll();
-  }, []);
+    Prism.highlightAll()
+  }, [])
 
   return (
     <pre className="rounded">
       <code className={`language-${language}`}>{children}</code>
     </pre>
-  );
-};
+  )
+}

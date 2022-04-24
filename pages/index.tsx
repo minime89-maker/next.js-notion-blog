@@ -1,19 +1,19 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { getDatabase } from '../lib/client';
-import { format } from 'date-fns';
-import Layout, { LayoutProps } from '../components/Layout';
-import { useTheme } from 'next-themes';
+import Head from 'next/head'
+import Link from 'next/link'
+import { getDatabase } from '../lib/client'
+import { format } from 'date-fns'
+import Layout, { LayoutProps } from '../components/Layout'
+import { useTheme } from 'next-themes'
 
-export const databaseId = process.env.NOTION_DATABASE_ID as string;
+export const databaseId = process.env.NOTION_DATABASE_ID as string
 
 export type HomeProps = {
-  database: Array<{ [key: string]: any }>;
-  author: { [key: string]: any };
-} & LayoutProps;
+  database: Array<{ [key: string]: any }>
+  author: { [key: string]: any }
+} & LayoutProps
 
 const Home = ({ database, author }: HomeProps) => {
-  const { theme } = useTheme();
+  const { theme } = useTheme()
 
   return (
     <Layout
@@ -70,38 +70,53 @@ const Home = ({ database, author }: HomeProps) => {
                               rx="2"
                               ry="2"
                             ></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                            <line
+                              x1="16"
+                              y1="2"
+                              x2="16"
+                              y2="6"
+                            ></line>
+                            <line
+                              x1="8"
+                              y1="2"
+                              x2="8"
+                              y2="6"
+                            ></line>
+                            <line
+                              x1="3"
+                              y1="10"
+                              x2="21"
+                              y2="10"
+                            ></line>
                           </svg>
                           {format(
                             new Date(page.properties.Date.date.start),
-                            'MMM dd, yyyy'
+                            'MMM dd, yyyy',
                           )}
                         </small>
                       </div>
                     </a>
                   </Link>
-                );
+                )
               } else {
-                return null;
+                return null
               }
             })}
         </div>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
 
 export const getStaticProps = async () => {
-  const database = await getDatabase(databaseId);
+  const database = await getDatabase(databaseId)
   return {
     props: {
       author: database[0],
       database: database.slice(1),
     },
     revalidate: 10,
-  };
-};
+  }
+}

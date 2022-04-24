@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useTheme } from 'next-themes';
-import Footer, { FooterProps } from './Footer';
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useTheme } from 'next-themes'
+import Footer, { FooterProps } from './Footer'
 
 export type LayoutProps = {
-  home?: boolean;
-  children?: React.ReactNode;
-  src: string;
-  authorDescription?: string;
-  authorSlug?: string;
-} & FooterProps;
+  home?: boolean
+  children?: React.ReactNode
+  src: string
+  authorDescription?: string
+  authorSlug?: string
+} & FooterProps
 
 const Layout = ({
   children,
@@ -24,15 +24,28 @@ const Layout = ({
   github,
   authorName,
 }: LayoutProps) => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
   return (
     <div className="container mx-auto my-auto min-w-full min-h-screen bg-backgroundColor dark:bg-backgroundDark">
       <Head>
-        <meta name="description" content={`${authorDescription}`} />
-        <meta property="og:title" content={`${authorName} Blog`} />
-        <meta name="author" content={authorName} />
-        <meta name="image" property="og:image" content={src} />
+        <meta
+          name="description"
+          content={`${authorDescription}`}
+        />
+        <meta
+          property="og:title"
+          content={`${authorName} Blog`}
+        />
+        <meta
+          name="author"
+          content={authorName}
+        />
+        <meta
+          name="image"
+          property="og:image"
+          content={src}
+        />
       </Head>
 
       <header className="flex justify-between items-center">
@@ -79,7 +92,11 @@ const Layout = ({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <circle cx="12" cy="12" r="5" />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="5"
+                    />
                     <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                   </svg>
                 ) : (
@@ -124,7 +141,11 @@ const Layout = ({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <circle cx="12" cy="12" r="5" />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="5"
+                    />
                     <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                   </svg>
                 ) : (
@@ -167,7 +188,7 @@ const Layout = ({
         authorName={authorName}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

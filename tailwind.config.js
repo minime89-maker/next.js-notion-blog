@@ -1,14 +1,16 @@
-
-
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './public/**/*.html'],
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './public/**/*.html',
+  ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'sans': ['IBM Plex Sans', 'Helvetica Neue', 'sans-serif'],
-      'serif': ['IBM Plex Serif', 'Georgia', 'serif'],
-      'mono': ['IBM Plex Mono', 'Menlo', 'monospace'],
+      sans: ['IBM Plex Sans', 'Helvetica Neue', 'sans-serif'],
+      serif: ['IBM Plex Serif', 'Georgia', 'serif'],
+      mono: ['IBM Plex Mono', 'Menlo', 'monospace'],
     },
     extend: {
       colors: {
@@ -19,7 +21,7 @@ module.exports = {
         social: '#2C7A7B',
         socialDark: '#81E6D9',
         callout: '#F4F4F5',
-        calloutDark: '#3a3a40'
+        calloutDark: '#3a3a40',
       },
       textColor: {
         textPrimary: '#1A202C',
@@ -29,7 +31,7 @@ module.exports = {
         textTertiary: '#6A6462',
         textTertiaryDark: '#ADADAD',
         textButton: '#fff',
-        textLinks: '#81E6D9'
+        textLinks: '#81E6D9',
       },
     },
   },

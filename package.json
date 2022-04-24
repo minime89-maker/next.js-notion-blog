@@ -24,15 +24,15 @@
     "sharp": "0.29.3",
     "source-map-loader": "3.0.1",
     "ts-loader": "9.2.8",
-    "typescript": "^4.6.3"
+    "typescript": "4.6.3"
   },
   "devDependencies": {
     "@types/nprogress": "0.2.0",
     "@types/prismjs": "1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
+    "@typescript-eslint/eslint-plugin": "5.20.0",
+    "@typescript-eslint/parser": "5.20.0",
     "autoprefixer": "10.2.6",
-    "eslint": "^8.14.0",
+    "eslint": "8.14.0",
     "eslint-config-next": "12.0.3",
     "next-pwa": "5.4.0",
     "postcss": "8.3.5",

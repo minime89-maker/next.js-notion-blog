@@ -1,4 +1,4 @@
-import withPWA from 'next-pwa'
+const withPWA = require('next-pwa')
 
 const production = process.env.NODE_ENV === 'production'
 
